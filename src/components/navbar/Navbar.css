@@ -1,0 +1,28 @@
+.nav-container {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+  height: 68px;
+  background-color: #ddd;
+}
+.left-container {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+.left-container h1 {
+  margin-left: 8px;
+}
+.right-container {
+  display: flex;
+  align-items: center;
+}
+.right-container i {
+  font-size: 20px;
+}
+
+@media (max-width: 440px) {
+  .right-container {
+    display: none;
+  }
+}
