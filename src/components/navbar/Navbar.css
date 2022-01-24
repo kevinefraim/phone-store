@@ -21,6 +21,12 @@
   font-size: 20px;
 }
 
+.nav-list {
+  list-style-type: none;
+  gap: 1.5rem;
+  margin: 0;
+}
+
 @media (max-width: 440px) {
   .right-container {
     display: none;
