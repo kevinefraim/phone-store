@@ -1,0 +1,40 @@
+.contacto-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.form-contacto {
+  padding: 20px;
+  width: 60%;
+}
+.title {
+  display: flex;
+  justify-content: center;
+}
+.title h1 {
+  display: inline-block;
+  padding-bottom: 2px;
+  text-align: center;
+  border-bottom: var(--blue) 2px solid;
+}
+.form-item {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+}
+.form-item input {
+  padding: 4px;
+}
+.form-item textarea {
+  resize: none;
+  padding: 4px;
+}
+.form-btn {
+  display: flex;
+  justify-content: center;
+}
+.form-btn button {
+  width: 25%;
+}
