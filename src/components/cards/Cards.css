@@ -1,9 +1,13 @@
 .oferta-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: var(--blue);
   margin: 10px;
   cursor: pointer;
   border-radius: 10px;
   transition: transform 0.3s ease;
+  height: 340px;
 }
 .oferta-card:hover {
   transform: scale(1.03);
@@ -13,4 +17,9 @@
 
 .oferta-card img {
   object-fit: contain;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

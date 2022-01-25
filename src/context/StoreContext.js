@@ -57,6 +57,7 @@ const StoreProvider = ({ children }) => {
     <StoreContext.Provider
       value={{
         products,
+        setProducts,
         ofertas,
         carrito,
         handleAdd,
