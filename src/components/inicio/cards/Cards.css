@@ -1,0 +1,17 @@
+.card-title {
+  display: flex;
+  justify-content: center;
+}
+.card-title h2 {
+  margin-top: 10px;
+  font-size: 40px;
+  display: inline-block;
+  padding-bottom: 2px;
+  text-align: center;
+  border-bottom: var(--blue) 2px solid;
+}
+.card-container {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-evenly;
+}
