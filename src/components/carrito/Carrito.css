@@ -1,0 +1,8 @@
+.title-cart {
+  display: flex;
+  justify-content: center;
+}
+.title-cart h1 {
+  border-bottom: var(--blue) 2px solid;
+  padding-bottom: 2px;
+}
