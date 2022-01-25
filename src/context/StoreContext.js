@@ -58,6 +58,7 @@ const StoreProvider = ({ children }) => {
       value={{
         products,
         ofertas,
+        carrito,
         handleAdd,
         handleAddQty,
         handleSub,
