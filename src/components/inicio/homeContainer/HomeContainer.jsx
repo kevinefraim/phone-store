@@ -1,11 +1,11 @@
-import Cards from "../cards/Cards";
+import Ofertas from "../ofertas/Ofertas";
 import Slider from "../slider/Slider";
 
 const HomeContainer = () => {
   return (
     <main>
       <Slider />
-      <Cards />
+      <Ofertas />
     </main>
   );
 };
