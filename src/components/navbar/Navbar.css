@@ -3,28 +3,43 @@
   width: 100%;
   justify-content: space-between;
   height: 68px;
-  background-color: #ddd;
+  background-color: #fff;
 }
 .left-container {
   display: flex;
   align-items: center;
+  gap: 1rem;
   padding: 6px;
 }
 .left-container h1 {
   margin-left: 8px;
+  color: var(--blue);
+  font-weight: 600;
 }
 .right-container {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  padding: 6px;
 }
 .right-container i {
   font-size: 20px;
+}
+
+.right-container input {
+  border: 1px solid grey;
+  padding: 2px;
 }
 
 .nav-list {
   list-style-type: none;
   gap: 1.5rem;
   margin: 0;
+}
+
+.nav-list a {
+  color: var(--blue);
+  font-weight: 600;
 }
 
 @media (max-width: 440px) {

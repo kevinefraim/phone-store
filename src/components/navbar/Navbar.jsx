@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../../assets/img/logo/logo.png";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -6,8 +7,8 @@ const Navbar = () => {
     <header>
       <nav className="nav-container">
         <div className="left-container">
-          <img src="#" alt="logo" />
-          <h1>LOGO</h1>
+          <h1 className="title">Phone-store</h1>
+          <img width={50} src={logo} alt="logo" />
           <ul className="d-flex justify-content-center nav-list">
             <Link to="/">Inicio</Link>
 
@@ -17,7 +18,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="right-container">
-          <input type="text" placeholder="Búsqueda" />
+          <input className="rounded-3" type="text" placeholder="Búsqueda" />
           <i className="bi bi-person-fill"></i>
           <i className="bi bi-cart-fill"></i>
         </div>
