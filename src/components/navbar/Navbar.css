@@ -2,8 +2,11 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  height: 68px;
+  /* height: 68px; */
   background-color: #fff;
+}
+.title-logo {
+  display: flex;
 }
 .left-container {
   display: flex;
@@ -42,8 +45,19 @@
   font-weight: 600;
 }
 
-@media (max-width: 440px) {
+@media (max-width: 520px) {
+  .nav-container {
+    flex-direction: column;
+  }
   .right-container {
-    display: none;
+    justify-content: center;
+  }
+}
+@media (max-width: 830px) {
+  .left-container {
+    flex-direction: column;
+  }
+  .nav-list {
+    padding: 4px 0;
   }
 }

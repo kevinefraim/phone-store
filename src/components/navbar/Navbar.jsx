@@ -7,10 +7,12 @@ const Navbar = () => {
     <header>
       <nav className="nav-container">
         <div className="left-container">
-          <Link to="/">
-            <h1 className="title">Phone-store</h1>
-          </Link>
-          <img width={50} src={logo} alt="logo" />
+          <div className="title-logo">
+            <Link to="/">
+              <h1 className="title">Phone-store</h1>
+            </Link>
+            <img width={50} src={logo} alt="logo" />
+          </div>
           <ul className="d-flex justify-content-center nav-list">
             <Link to="/">Inicio</Link>
 
@@ -21,7 +23,9 @@ const Navbar = () => {
         </div>
         <div className="right-container">
           <input className="rounded-3" type="text" placeholder="Búsqueda" />
-          <i className="bi bi-person-fill"></i>
+          <Link to="login">
+            <i className="bi bi-person-fill"></i>
+          </Link>
           <i className="bi bi-cart-fill"></i>
         </div>
       </nav>

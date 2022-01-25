@@ -2,27 +2,33 @@ import "./Cards.css";
 
 const Cards = () => {
   return (
-    <div className="card-container">
-      <div className="shadow" style={{ width: "18rem" }}>
+    <>
+      <div className="shadow oferta-card" style={{ width: "18rem" }}>
         <img className="card-img-top" src="" alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
         </div>
       </div>
-      <div className="shadow" style={{ width: "18rem" }}>
+      <div className="shadow oferta-card" style={{ width: "18rem" }}>
         <img className="card-img-top" src="..." alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p>PRECIO</p>
         </div>
       </div>
-      <div className="shadow" style={{ width: "18rem" }}>
+      <div className="shadow oferta-card" style={{ width: "18rem" }}>
         <img className="card-img-top" src="..." alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
         </div>
       </div>
-    </div>
+      <div className="shadow oferta-card" style={{ width: "18rem" }}>
+        <img className="card-img-top" src="..." alt="Card image cap" />
+        <div className="card-body">
+          <h5 className="card-title">Card title</h5>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import Cards from "../../cards/Cards";
+
 import "./Ofertas.css";
 const Ofertas = () => {
   return (
@@ -6,7 +7,9 @@ const Ofertas = () => {
       <div className="card-title">
         <h2>Ofertas!</h2>
       </div>
-      <Cards />
+      <div className="card-container">
+        <Cards />
+      </div>
     </div>
   );
 };

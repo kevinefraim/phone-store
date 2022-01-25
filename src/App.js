@@ -4,6 +4,7 @@ import Tienda from "./pages/tienda";
 import Contacto from "./pages/contacto";
 import Navbar from "./components/navbar/Navbar";
 import AppContextProvider from "./context/AppContext";
+import LogIn from "./pages/login/Login";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/tienda" element={<Tienda />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="/login" element={<LogIn />} />
         </Routes>
       </Router>
     </AppContextProvider>
