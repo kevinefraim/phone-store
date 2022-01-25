@@ -1,5 +1,5 @@
-import "./Navbar.css";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
@@ -8,17 +8,13 @@ const Navbar = () => {
         <div className="left-container">
           <img src="#" alt="logo" />
           <h1>LOGO</h1>
-          {/* <ul className="nav-list">
-            <li>
-              <Link to="/">Inicio</Link>
-            </li>
-            <li>
-              <Link to="/tienda">Tienda</Link>
-            </li>
-            <li>
-              <Link to="/contacto">Contacto</Link>
-            </li>
-          </ul> */}
+          <ul className="d-flex justify-content-center nav-list">
+            <Link to="/">Inicio</Link>
+
+            <Link to="/tienda">Tienda</Link>
+
+            <Link to="/contacto">Contacto</Link>
+          </ul>
         </div>
         <div className="right-container">
           <input type="text" placeholder="Búsqueda" />
