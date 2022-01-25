@@ -5,7 +5,7 @@ export const initialProducts = [
     precio: 600,
     marca: "Apple",
     desc: "Apple Iphone 11 128GB, Gold - Unlocked",
-    img: `1.png`,
+    img: "iphone11",
     stock: 10,
   },
   {
@@ -14,7 +14,7 @@ export const initialProducts = [
     precio: 950,
     marca: "Apple",
     desc: "Apple Iphone 12 Pro Max 128GB, Graphite - Unlocked",
-    img: `2.png`,
+    img: `iphone12pro`,
     stock: 4,
   },
   {
@@ -23,7 +23,7 @@ export const initialProducts = [
     precio: 700,
     marca: "Samsung",
     desc: "Samsung Galaxy S21 5G Android - Silver - Factory Unlocked",
-    img: `3.png`,
+    img: `galaxy-s21`,
     stock: 6,
   },
   {
@@ -32,7 +32,7 @@ export const initialProducts = [
     precio: 280,
     marca: "Samsung",
     desc: "Samsung Galaxy A32 5G - Awesome Blue - Factory Unlocked",
-    img: `4.png`,
+    img: `galaxy-a32`,
     stock: 12,
   },
   {
@@ -41,7 +41,7 @@ export const initialProducts = [
     precio: 200,
     marca: "Motorola",
     desc: "Motorola G Power 2021 - Gray - 64GB - 48MP Camera",
-    img: `5.png`,
+    img: `moto-gPower`,
     stock: 8,
   },
   {
@@ -50,7 +50,7 @@ export const initialProducts = [
     precio: 500,
     marca: "Samsung",
     desc: "Samsung Galaxy A52 2021 - Black - 128GB - 64MP Camera",
-    img: `6.png`,
+    img: `galaxy-a52`,
     stock: 5,
   },
   {
@@ -59,7 +59,7 @@ export const initialProducts = [
     precio: 180,
     marca: "Samsung",
     desc: "Samsung Galaxy A12 2021 - Black - 32GB - 64MP Camera",
-    img: `7.png`,
+    img: `galaxy-a12`,
     stock: 12,
   },
   {
@@ -68,7 +68,7 @@ export const initialProducts = [
     precio: 600,
     marca: "Samsung",
     desc: "Samsung Galaxy S20 FE 5G - Cloud Red - 128GB - Factory Unlocked",
-    img: `8.png`,
+    img: `galaxy-s20`,
     stock: 3,
   },
   {
@@ -77,7 +77,7 @@ export const initialProducts = [
     precio: 160,
     marca: "TCL",
     desc: "TCL 10 SE 2021 - Polar Night- 4GB RAM - 16MP Camera - Unlocked",
-    img: `9.png`,
+    img: `tcl10`,
     stock: 2,
   },
   {
@@ -86,7 +86,7 @@ export const initialProducts = [
     precio: 930,
     marca: "Google",
     desc: "Google Pixel 6 5G - Stormy Black - 256GB - Ultrawide lens - Unlocked",
-    img: `10.png`,
+    img: `pixel6`,
     stock: 8,
   },
   {
@@ -95,7 +95,7 @@ export const initialProducts = [
     precio: 800,
     marca: "Motorola",
     desc: "Motorola Edge 20 Pro 5G - Midnight Blue - 256GB - Multi-Camera System - Unlocked",
-    img: `11.png`,
+    img: `moto-edge20`,
     stock: 4,
   },
   {
@@ -104,7 +104,7 @@ export const initialProducts = [
     precio: 1000,
     marca: "Sony",
     desc: "Sony Xperia 5 III 5G - Black - 128GB - Triple Camera - Unlocked",
-    img: `12.png`,
+    img: `xperia5`,
     stock: 10,
   },
   {
@@ -113,7 +113,7 @@ export const initialProducts = [
     precio: 1700,
     marca: "Sony",
     desc: "Sony Xperia PRO-I 5G - Black - 128GB - Image Sensor 4K - Unlocked",
-    img: `13.png`,
+    img: `xperia-pro`,
     stock: 4,
   },
   {
@@ -122,7 +122,7 @@ export const initialProducts = [
     precio: 330,
     marca: "Apple",
     desc: "Apple iPhone XR - Blue - 64GB - US Version - Unlocked",
-    img: `14.png`,
+    img: `iphone-xr`,
     stock: 2,
   },
   {
@@ -131,7 +131,7 @@ export const initialProducts = [
     precio: 240,
     marca: "Motorola",
     desc: "Motorola G Stylus 5G - Blue - 128GB  - Unlocked",
-    img: `15.png`,
+    img: `moto-gStylus`,
     stock: 8,
   },
   {
@@ -140,7 +140,7 @@ export const initialProducts = [
     precio: 170,
     marca: "Samsung",
     desc: "Samsung Galaxy S8 - Midnight Black - 64GB  - Unlocked",
-    img: `16.png`,
+    img: `galaxy-s8`,
     stock: 5,
   },
   {
@@ -149,7 +149,7 @@ export const initialProducts = [
     precio: 370,
     marca: "Apple",
     desc: "Apple iPhone X - Silver - 256GB  - Unlocked",
-    img: `17.png`,
+    img: `iphone-x`,
     stock: 14,
   },
   {
@@ -158,7 +158,7 @@ export const initialProducts = [
     precio: 230,
     marca: "Apple",
     desc: "Apple iPhone 8 - Gold - 64GB  - Unlocked",
-    img: `18.png`,
+    img: `iphone8`,
     stock: 10,
   },
   {
@@ -167,7 +167,7 @@ export const initialProducts = [
     precio: 330,
     marca: "Apple",
     desc: "Apple iPhone 8 Plus - Gold - 64GB  - Unlocked",
-    img: `19.png`,
+    img: `iphone8-plus`,
     stock: 6,
   },
   {
@@ -176,7 +176,7 @@ export const initialProducts = [
     precio: 1600,
     marca: "Samsung",
     desc: "Samsung Galaxy Z Fold - Phantom Black - 256GB - Foldable - Unlocked",
-    img: `20.png`,
+    img: `galaxy-fold`,
     stock: 8,
   },
 ];
