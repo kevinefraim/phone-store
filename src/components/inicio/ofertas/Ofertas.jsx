@@ -13,7 +13,7 @@ const Ofertas = () => {
       </div>
       <div className="card-container">
         {ofertas.map((oferta) => (
-          <Cards {...oferta} />
+          <Cards key={oferta.id} {...oferta} />
         ))}
       </div>
     </div>
