@@ -1,55 +1,23 @@
 import "./Cards.css";
 
-const Cards = () => {
+const Cards = ({ nombre, precio, img }) => {
   return (
     <>
-      <div className="shadow oferta-card" style={{ width: "18rem" }}>
-        <img className="card-img-top" src="" alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
+      <article className="shadow oferta-card">
+        <img
+          height={190}
+          width={250}
+          className="product-img"
+          src={require(`../../assets/img/productos/${img}.png`)}
+          alt={nombre}
+        />
+        <div className="card-body text-center fs-5 fw-bolder">
+          <h5 className="fs- fw-bolder">{nombre}</h5>
+          <p>${precio}</p>
         </div>
-      </div>
-      <div className="shadow oferta-card" style={{ width: "18rem" }}>
-        <img className="card-img-top" src="..." alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p>PRECIO</p>
-        </div>
-      </div>
-      <div className="shadow oferta-card" style={{ width: "18rem" }}>
-        <img className="card-img-top" src="..." alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-        </div>
-      </div>
-      <div className="shadow oferta-card" style={{ width: "18rem" }}>
-        <img className="card-img-top" src="..." alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-        </div>
-      </div>
+      </article>
     </>
   );
 };
 
 export default Cards;
-<div className="card-container">
-  <div class="shadow" style={{ width: "18rem" }}>
-    <img class="card-img-top" src="..." alt="Card image cap" />
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-    </div>
-  </div>
-  <div class="shadow" style={{ width: "18rem" }}>
-    <img class="card-img-top" src="..." alt="Card image cap" />
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-    </div>
-  </div>
-  <div class="shadow" style={{ width: "18rem" }}>
-    <img class="card-img-top" src="..." alt="Card image cap" />
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-    </div>
-  </div>
-</div>;

@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import StoreProvider from "./context/StoreContext";
 import Home from "./pages/home";
+import Navbar from "./components/navbar/Navbar";
 import Tienda from "./pages/tienda";
 import Contacto from "./pages/contacto";
-import Navbar from "./components/navbar/Navbar";
-import AppContextProvider from "./context/AppContext";
 import LogIn from "./pages/login/Login";
 
 const App = () => {
   return (
-    <AppContextProvider>
+    <StoreProvider>
       <Router>
         <Navbar />
         <Routes>
@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/login" element={<LogIn />} />
         </Routes>
       </Router>
-    </AppContextProvider>
+    </StoreProvider>
   );
 };
 

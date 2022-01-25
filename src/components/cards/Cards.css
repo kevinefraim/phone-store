@@ -1,4 +1,16 @@
 .oferta-card {
+  color: var(--blue);
   margin: 10px;
-  justify-content: flex-start;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.oferta-card:hover {
+  transform: scale(1.03);
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.oferta-card img {
+  object-fit: contain;
 }

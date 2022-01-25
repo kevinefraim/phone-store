@@ -1,8 +1,10 @@
+import TiendaContainer from "../../components/tiendaContainer";
+
 const Tienda = () => {
   return (
-    <div>
-      <h1>Tienda</h1>
-    </div>
+    <main>
+      <TiendaContainer />
+    </main>
   );
 };
 
