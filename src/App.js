@@ -3,9 +3,9 @@ import StoreProvider from "./context/StoreContext";
 import Home from "./pages/home";
 import Navbar from "./components/navbar/Navbar";
 import Tienda from "./pages/tienda";
+import ProductDetail from "./components/productDetail/ProductDetail";
 import Contacto from "./pages/contacto";
 import LogIn from "./pages/login/Login";
-import Detalles from "./components/detalles/Detalles";
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tienda" element={<Tienda />} />
-          <Route path="/tienda/:id" element={<Detalles />} />
+          <Route path="/tienda/:id" element={<ProductDetail />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/login" element={<LogIn />} />
         </Routes>

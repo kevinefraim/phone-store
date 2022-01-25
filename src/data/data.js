@@ -1,6 +1,6 @@
 export const initialProducts = [
   {
-    id: 1,
+    id: "1",
     nombre: "Iphone 11",
     precio: 600,
     marca: "Apple",
@@ -9,7 +9,7 @@ export const initialProducts = [
     stock: 10,
   },
   {
-    id: 2,
+    id: "2",
     nombre: "Iphone 12 Pro Max",
     precio: 950,
     marca: "Apple",
@@ -18,7 +18,7 @@ export const initialProducts = [
     stock: 4,
   },
   {
-    id: 3,
+    id: "3",
     nombre: "Samsung Galaxy S21",
     precio: 700,
     marca: "Samsung",
@@ -27,7 +27,7 @@ export const initialProducts = [
     stock: 6,
   },
   {
-    id: 4,
+    id: "4",
     nombre: "Samsung Galaxy A32",
     precio: 280,
     marca: "Samsung",
@@ -36,7 +36,7 @@ export const initialProducts = [
     stock: 12,
   },
   {
-    id: 5,
+    id: "5",
     nombre: "Motorola G Power",
     precio: 200,
     marca: "Motorola",
@@ -45,7 +45,7 @@ export const initialProducts = [
     stock: 8,
   },
   {
-    id: 6,
+    id: "6",
     nombre: "Samsung Galaxy A52",
     precio: 500,
     marca: "Samsung",
@@ -54,7 +54,7 @@ export const initialProducts = [
     stock: 5,
   },
   {
-    id: 7,
+    id: "7",
     nombre: "Samsung Galaxy A12",
     precio: 180,
     marca: "Samsung",
@@ -63,7 +63,7 @@ export const initialProducts = [
     stock: 12,
   },
   {
-    id: 8,
+    id: "8",
     nombre: "Samsung Galaxy S20 FE",
     precio: 600,
     marca: "Samsung",
@@ -72,7 +72,7 @@ export const initialProducts = [
     stock: 3,
   },
   {
-    id: 9,
+    id: "9",
     nombre: "TCL 10 SE",
     precio: 160,
     marca: "TCL",
@@ -81,7 +81,7 @@ export const initialProducts = [
     stock: 2,
   },
   {
-    id: 10,
+    id: "10",
     nombre: "Google Pixel 6",
     precio: 930,
     marca: "Google",
@@ -90,7 +90,7 @@ export const initialProducts = [
     stock: 8,
   },
   {
-    id: 11,
+    id: "11",
     nombre: "Motorola Edge 20 Pro",
     precio: 800,
     marca: "Motorola",
@@ -99,7 +99,7 @@ export const initialProducts = [
     stock: 4,
   },
   {
-    id: 12,
+    id: "12",
     nombre: "Sony Xperia 5 III",
     precio: 1000,
     marca: "Sony",
@@ -108,7 +108,7 @@ export const initialProducts = [
     stock: 10,
   },
   {
-    id: 13,
+    id: "13",
     nombre: "Sony Xperia PRO-I",
     precio: 1700,
     marca: "Sony",
@@ -117,7 +117,7 @@ export const initialProducts = [
     stock: 4,
   },
   {
-    id: 14,
+    id: "14",
     nombre: "Apple iPhone XR",
     precio: 330,
     marca: "Apple",
@@ -126,7 +126,7 @@ export const initialProducts = [
     stock: 2,
   },
   {
-    id: 15,
+    id: "15",
     nombre: "Motorola G Stylus",
     precio: 240,
     marca: "Motorola",
@@ -135,7 +135,7 @@ export const initialProducts = [
     stock: 8,
   },
   {
-    id: 16,
+    id: "16",
     nombre: "Samsung Galaxy S8",
     precio: 170,
     marca: "Samsung",
@@ -144,7 +144,7 @@ export const initialProducts = [
     stock: 5,
   },
   {
-    id: 17,
+    id: "17",
     nombre: "Apple iPhone X",
     precio: 370,
     marca: "Apple",
@@ -153,7 +153,7 @@ export const initialProducts = [
     stock: 14,
   },
   {
-    id: 18,
+    id: "18",
     nombre: "Apple iPhone 8",
     precio: 230,
     marca: "Apple",
@@ -162,7 +162,7 @@ export const initialProducts = [
     stock: 10,
   },
   {
-    id: 19,
+    id: "19",
     nombre: "Apple iPhone 8 Plus",
     precio: 330,
     marca: "Apple",
@@ -171,7 +171,7 @@ export const initialProducts = [
     stock: 6,
   },
   {
-    id: 20,
+    id: "20",
     nombre: "Samsung Galaxy Z Fold",
     precio: 1600,
     marca: "Samsung",
@@ -183,7 +183,7 @@ export const initialProducts = [
 
 export const initialOfertas = [
   {
-    id: 17,
+    id: "17",
     nombre: "Apple iPhone X",
     precio: 370,
     marca: "Apple",
@@ -192,7 +192,7 @@ export const initialOfertas = [
     stock: 14,
   },
   {
-    id: 8,
+    id: "8",
     nombre: "Samsung Galaxy S20 FE",
     precio: 600,
     marca: "Samsung",
@@ -201,7 +201,7 @@ export const initialOfertas = [
     stock: 3,
   },
   {
-    id: 9,
+    id: "9",
     nombre: "TCL 10 SE",
     precio: 160,
     marca: "TCL",
@@ -210,7 +210,7 @@ export const initialOfertas = [
     stock: 2,
   },
   {
-    id: 16,
+    id: "16",
     nombre: "Samsung Galaxy S8",
     precio: 170,
     marca: "Samsung",
