@@ -1,0 +1,38 @@
+export const initialProducts = [
+  {
+    id: 1,
+    nombre: "Iphone 11",
+    precio: 600,
+    marca: "Apple",
+    desc: "Apple Iphone 11 128GB, Gold - Unlocked",
+    img: "",
+    stock: 10,
+  },
+  {
+    id: 2,
+    nombre: "Iphone 12 Pro Max",
+    precio: 950,
+    marca: "Apple",
+    desc: "Apple Iphone 12 Pro Max 128GB, Graphite - Unlocked",
+    img: "",
+    stock: 4,
+  },
+  {
+    id: 3,
+    nombre: "Samsung Galaxy S21",
+    precio: 700,
+    marca: "Samsung",
+    desc: "Samsung Galaxy S21 5G Android - Silver - Factory Unlocked",
+    img: "",
+    stock: 6,
+  },
+  {
+    id: 4,
+    nombre: "Samsung Galaxy A32",
+    precio: 280,
+    marca: "Samsung",
+    desc: "Samsung Galaxy A32 5G - Awesome Blue - Factory Unlocked",
+    img: "",
+    stock: 12,
+  },
+];

@@ -3,17 +3,21 @@ import Home from "./pages/home";
 import Tienda from "./pages/tienda";
 import Contacto from "./pages/contacto";
 import Navbar from "./components/navbar/Navbar";
+import AppContextProvider from "./context/AppContext";
 
 const App = () => {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tienda" element={<Tienda />} />
-        <Route path="/contacto" element={<Contacto />} />
-      </Routes>
-    </Router>
+    <AppContextProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          AppContextProvider
+          <Route path="/tienda" element={<Tienda />} />
+          <Route path="/contacto" element={<Contacto />} />
+        </Routes>
+      </Router>
+    </AppContextProvider>
   );
 };
 
