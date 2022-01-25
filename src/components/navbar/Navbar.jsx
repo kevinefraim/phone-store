@@ -7,7 +7,9 @@ const Navbar = () => {
     <header>
       <nav className="nav-container">
         <div className="left-container">
-          <h1 className="title">Phone-store</h1>
+          <Link to="/">
+            <h1 className="title">Phone-store</h1>
+          </Link>
           <img width={50} src={logo} alt="logo" />
           <ul className="d-flex justify-content-center nav-list">
             <Link to="/">Inicio</Link>
