@@ -3,6 +3,11 @@
   --blue: #0077c0;
 }
 
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -11,11 +16,11 @@
   overflow-x: hidden;
 }
 
-#root {
+<<<<<<< HEAD #root {
   height: 100vh;
   width: 100vw;
 }
 
-a {
+=======>>>>>>>5d03782e2132415bc3dd08cd81cec2cce0210d24 a {
   text-decoration: none;
 }
