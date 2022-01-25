@@ -181,7 +181,7 @@ export const initialProducts = [
   },
 ];
 
-export const ofertas = [
+export const initialOfertas = [
   {
     id: 17,
     nombre: "Apple iPhone X",
@@ -208,5 +208,14 @@ export const ofertas = [
     desc: "TCL 10 SE 2021 - Polar Night- 4GB RAM - 16MP Camera - Unlocked",
     img: `tcl10`,
     stock: 2,
+  },
+  {
+    id: 16,
+    nombre: "Samsung Galaxy S8",
+    precio: 170,
+    marca: "Samsung",
+    desc: "Samsung Galaxy S8 - Midnight Black - 64GB  - Unlocked",
+    img: `galaxy-s8`,
+    stock: 5,
   },
 ];

@@ -1,4 +1,4 @@
-import TiendaContainer from "../../components/tiendaContainer";
+import TiendaContainer from "../../components/tiendaContainer/TiendaContainer";
 
 const Tienda = () => {
   return (

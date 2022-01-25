@@ -1,11 +1,11 @@
 import { createContext, useState } from "react";
-import { initialProducts } from "../data/data";
+import { initialOfertas, initialProducts } from "../data/data";
 
 export const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState(initialProducts);
-  const [ofertas, setOfertas] = useState();
+  const [ofertas, setOfertas] = useState(initialOfertas);
 
   return (
     <StoreContext.Provider value={{ products, ofertas }}>
