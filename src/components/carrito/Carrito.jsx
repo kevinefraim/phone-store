@@ -6,7 +6,7 @@ const Carrito = () => {
       <div className="title-cart">
         <h1 className="mb-4">Carrito de compras</h1>
       </div>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">Imagen</th>
