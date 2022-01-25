@@ -180,3 +180,33 @@ export const initialProducts = [
     stock: 8,
   },
 ];
+
+export const ofertas = [
+  {
+    id: 17,
+    nombre: "Apple iPhone X",
+    precio: 370,
+    marca: "Apple",
+    desc: "Apple iPhone X - Silver - 256GB  - Unlocked",
+    img: `iphone-x`,
+    stock: 14,
+  },
+  {
+    id: 8,
+    nombre: "Samsung Galaxy S20 FE",
+    precio: 600,
+    marca: "Samsung",
+    desc: "Samsung Galaxy S20 FE 5G - Cloud Red - 128GB - Factory Unlocked",
+    img: `galaxy-s20`,
+    stock: 3,
+  },
+  {
+    id: 9,
+    nombre: "TCL 10 SE",
+    precio: 160,
+    marca: "TCL",
+    desc: "TCL 10 SE 2021 - Polar Night- 4GB RAM - 16MP Camera - Unlocked",
+    img: `tcl10`,
+    stock: 2,
+  },
+];
