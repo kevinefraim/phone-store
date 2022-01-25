@@ -26,7 +26,9 @@ const Navbar = () => {
           <Link to="login">
             <i className="bi bi-person-fill"></i>
           </Link>
-          <i className="bi bi-cart-fill"></i>
+          <Link to="/carrito">
+            <i className="bi bi-cart-fill"></i>
+          </Link>
         </div>
       </nav>
     </header>

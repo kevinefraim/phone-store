@@ -21,10 +21,12 @@ const Detalles = () => {
   return (
     <main className="container-fluid">
       <div className="detalle-container">
-        <img
-          src={`${process.env.PUBLIC_URL}/assets/productos/${product.img}.png`}
-          alt={product.nombre}
-        />
+        <div className="img-detalle">
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/productos/${product.img}.png`}
+            alt={product.nombre}
+          />
+        </div>
         <div className="detalle-body">
           <h1>{product.nombre}</h1>
           <h5>{product.desc}</h5>
