@@ -1,0 +1,20 @@
+.form-login {
+  padding: 20px;
+  width: 40%;
+  background-color: var(--blue);
+  border-radius: 5px;
+  color: #fff;
+}
+.registro-btn {
+  margin: 8px;
+}
+.registro-btn {
+  text-decoration: underline;
+  color: #fff;
+}
+@media (max-width: 850px) {
+  .form-login {
+    width: 100%;
+    padding: 10px;
+  }
+}

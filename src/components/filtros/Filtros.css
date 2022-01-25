@@ -19,6 +19,7 @@
 .filter-list li {
   margin: 10px 0;
   color: var(--blue);
+  text-decoration: underline;
 }
 
 @media (max-width: 780px) {
