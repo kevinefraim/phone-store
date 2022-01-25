@@ -6,12 +6,11 @@ import "./Detalles.css";
 const Detalles = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState();
-  const { id } = useParams();
   const { products } = useContext(StoreContext);
+  const { id } = useParams();
 
   useEffect(() => {
     setProduct(products.find((prod) => prod.id == id));
-    console.log(product);
   }, []);
 
   //onChange quantity
@@ -23,7 +22,7 @@ const Detalles = () => {
     <main className="container-fluid">
       <div className="detalle-container">
         <img
-          src={require(`../../assets/img/productos/${product.img}.png`)}
+          src={`${process.env.PUBLIC_URL}/assets/productos/${product.img}.png`}
           alt={product.nombre}
         />
         <div className="detalle-body">

@@ -10,7 +10,7 @@ const Cards = ({ nombre, precio, img, id }) => {
             height={190}
             width={250}
             className="product-img"
-            src={require(`../../assets/img/productos/${img}.png`)}
+            src={`${process.env.PUBLIC_URL}/assets/productos/${img}.png`}
             alt={nombre}
           />
           <div className="card-body text-center fs-5 fw-bolder">
