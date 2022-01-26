@@ -5,6 +5,7 @@ import { StoreContext } from "../../../context/StoreContext";
 import logo from "../../../assets/img/logo/logo.png";
 
 import "./Navbar.css";
+import ResponsiveMenu from "../responsiveMenu/ResponsiveMenu";
 
 const Navbar = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
@@ -28,34 +29,38 @@ const Navbar = () => {
             </Link>
             <img width={50} src={logo} alt="logo" />
           </div>
-          <ul className="d-flex justify-content-center nav-list">
+
+          <ul className="nav-list ">
             <Link to="/">Inicio</Link>
 
             <Link to="/tienda">Tienda</Link>
 
             <Link to="/contacto">Contacto</Link>
           </ul>
+          <ResponsiveMenu />
         </div>
         <div className="right-container me-3">
           <input className="rounded-3" type="text" placeholder="Búsqueda" />
           {activeUser ? (
             <div className="d-flex align-items-center">
               <p className="m-0">Hola {activeUser.nombre}!</p>
-              <button
-                onClick={onLogout}
-                className="ms-2 btn btn-outline-danger"
-              >
-                Salir
-              </button>
+              <div className="btn-logout">
+                <button
+                  onClick={onLogout}
+                  className="ms-2 btn btn-outline-danger"
+                >
+                  Salir
+                </button>
+              </div>
             </div>
           ) : (
             <Link to="login">
               <i className="bi bi-person-fill"></i>
             </Link>
           )}
-          <Link to="/carrito">
+          <Link to="/carrito" className="d-flex">
             <i className="bi bi-cart-fill"></i>
-            {totalItems}
+            <span className="me-2">{totalItems}</span>
           </Link>
         </div>
       </nav>

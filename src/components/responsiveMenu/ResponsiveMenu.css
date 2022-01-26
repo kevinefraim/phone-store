@@ -1,0 +1,26 @@
+.nav-responsive {
+  display: none;
+}
+
+/* responsive mobile */
+@media (max-width: 680px) {
+  .nav-responsive {
+    display: block;
+  }
+  .nav-responsive-list {
+    margin-top: 2px;
+    border-radius: 10px;
+    background-color: var(--blue);
+    padding: 0 12px;
+  }
+  .ul-responsive {
+    display: flex;
+    flex-direction: column;
+  }
+  .ul-responsive a {
+    color: #000;
+  }
+  .btn-logout {
+    display: none;
+  }
+}

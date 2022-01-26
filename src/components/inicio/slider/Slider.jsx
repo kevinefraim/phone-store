@@ -1,5 +1,6 @@
 import iphone from "../../../assets/img/slider/iPhone.jpg";
 import samsung from "../../../assets/img/slider/samsung.png";
+import "./Slider.css";
 
 const Slider = () => {
   return (
@@ -14,7 +15,7 @@ const Slider = () => {
             <img
               height={560}
               src={samsung}
-              className="d-block w-100"
+              className="d-block w-100 img-slider"
               alt="samsung"
             />
           </div>
