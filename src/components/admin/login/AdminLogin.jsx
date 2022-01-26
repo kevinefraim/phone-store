@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
-import ErrorForm from "../../assets/errorForm/ErrorForm";
+import LoginForm from "../../layout/loginForm/LoginForm";
 
 const AdminLogin = () => {
   const [usuario, setUsuario] = useState("");
@@ -53,38 +53,14 @@ const AdminLogin = () => {
       className="d-flex justify-content-center align-items-center"
       style={{ height: "100vh" }}
     >
-      <form onSubmit={handleLog} className="form-login">
-        <div className="title d-flex flex-column">
-          <h2 className="text-center">Inicia Sesión</h2>
-          {error !== "" && <ErrorForm error={error} />}
-        </div>
-        <div className="form-item">
-          <label htmlFor="user">Nombre de Usuario</label>
-          <input
-            onChange={({ target }) => setUsuario(target.value)}
-            value={usuario}
-            type="text"
-            name="user"
-            placeholder="Ingrese su usuario"
-          />
-        </div>
-        <div className="form-item">
-          <label htmlFor="password">Contraseña</label>
-          <input
-            onChange={({ target }) => setPass(target.value)}
-            value={pass}
-            type="password"
-            name="password"
-            placeholder="Ingrese su contraseña"
-            min={0}
-          />
-        </div>
-        <div className="form-btn">
-          <button className="btn btn-light" type="submit">
-            Enviar
-          </button>
-        </div>
-      </form>
+      <LoginForm
+        error={error}
+        usuario={usuario}
+        pass={pass}
+        handleLog={handleLog}
+        setUsuario={setUsuario}
+        setPass={setPass}
+      />
     </main>
   );
 };
