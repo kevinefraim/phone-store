@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { StoreContext } from "../../../context/StoreContext";
-import Cards from "../../cards/Cards";
+import Cards from "../../layout/cards/Cards";
+
 import "./Ofertas.css";
 
 const Ofertas = () => {

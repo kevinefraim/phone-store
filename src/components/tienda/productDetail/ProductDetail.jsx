@@ -1,8 +1,9 @@
 import { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext";
+import { StoreContext } from "../../../context/StoreContext";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../context/AuthContext";
-import { StoreContext } from "../../context/StoreContext";
+
 import "./ProductDetail.css";
 
 const addAlert = () => {

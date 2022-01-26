@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthProvider from "./context/AuthContext";
 import StoreProvider from "./context/StoreContext";
+import Navbar from "./components/layout/navbar/Navbar";
 import Home from "./pages/home/Home";
-import Navbar from "./components/navbar/Navbar";
 import Tienda from "./pages/tienda/Tienda";
-import ProductDetail from "./components/productDetail/ProductDetail";
+import ProductDetail from "./components/tienda/productDetail/ProductDetail";
 import Contacto from "./pages/contacto/Contacto";
-import Carrito from "./components/carrito/Carrito";
-import LogIn from "./components/login/Login";
-import Registro from "./components/registro/Registro";
+import Carrito from "./components/tienda/carrito/Carrito";
+import LogIn from "./components/auth/login/Login";
+import Registro from "./components/auth/registro/Registro";
 
 const App = () => {
   return (

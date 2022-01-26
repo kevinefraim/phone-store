@@ -1,5 +1,7 @@
-import "./Filtros.css";
 import { Link } from "react-router-dom";
+
+import "./Filtros.css";
+
 const Filtros = () => {
   return (
     <div className="col-md-3  mt-4 filter-container">

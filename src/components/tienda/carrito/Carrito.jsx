@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { StoreContext } from "../../../context/StoreContext";
 
-import { StoreContext } from "../../context/StoreContext";
 import "./Carrito.css";
-import { AuthContext } from "../../context/AuthContext";
 
 const Carrito = () => {
   const {
@@ -14,7 +13,6 @@ const Carrito = () => {
     handleDelete,
     handleClear,
   } = useContext(StoreContext);
-  const { activeUser } = useContext(AuthContext);
 
   const carTotal = carrito.reduce(
     (price, car) => price + car.precio * car.qty,

@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { StoreContext } from "../../context/StoreContext";
-import Cards from "../cards/Cards";
+import { StoreContext } from "../../../context/StoreContext";
+import Cards from "../../layout/cards/Cards";
 import Filtros from "../filtros/Filtros";
+
 import "./TiendaContainer.css";
 
 const TiendaContainer = () => {
-  const { products, setProducts } = useContext(StoreContext);
+  const { products } = useContext(StoreContext);
   const [prodFiltered, setProdFiltered] = useState([]);
   const { cat } = useParams();
 
