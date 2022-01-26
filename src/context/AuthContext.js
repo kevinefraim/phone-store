@@ -9,6 +9,9 @@ const AuthProvider = ({ children }) => {
   const [activeUser, setActiveUser] = useState(
     JSON.parse(localStorage.getItem("activeUser")) ?? null
   ); //estado de usuario activo con LS
+  const [adminUser, setAdminUser] = useState(
+    JSON.parse(sessionStorage.getItem("adminUser")) ?? null
+  );
 
   //seteando item users con LS
   useEffect(() => {
@@ -35,6 +38,14 @@ const AuthProvider = ({ children }) => {
     setActiveUser(null);
   };
 
+  const handleAdminUser = (user) => {
+    setAdminUser(user);
+  };
+
+  const handleLogoutAdmin = (user) => {
+    setAdminUser(null);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -43,6 +54,8 @@ const AuthProvider = ({ children }) => {
         handleAddUsers,
         handleActiveUser,
         handleLogout,
+        handleAdminUser,
+        handleLogoutAdmin,
       }}
     >
       {children}
