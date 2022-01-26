@@ -1,8 +1,10 @@
 import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import { StoreContext } from "../../context/StoreContext";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext";
+import { StoreContext } from "../../../context/StoreContext";
+
 import "./ResponsiveMenu.css";
+
 const ResponsiveMenu = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
   const { handleClear } = useContext(StoreContext);
@@ -21,11 +23,10 @@ const ResponsiveMenu = () => {
           className="btn btn-secondary"
           data-toggle="collapse"
           href="#multiCollapseExample1"
-          role="button"
           aria-expanded="false"
           aria-controls="multiCollapseExample1"
         >
-          <i class="bi bi-list"></i>
+          <i className="bi bi-list"></i>
         </button>
       </div>
       <div className="nav-responsive-list">

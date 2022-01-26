@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import { StoreContext } from "../../../context/StoreContext";
+import ResponsiveMenu from "../responsiveMenu/ResponsiveMenu";
 import logo from "../../../assets/img/logo/logo.png";
 
 import "./Navbar.css";
-import ResponsiveMenu from "../responsiveMenu/ResponsiveMenu";
 
 const Navbar = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
