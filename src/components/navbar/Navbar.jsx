@@ -1,12 +1,21 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import { StoreContext } from "../../context/StoreContext";
 import logo from "../../assets/img/logo/logo.png";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { carrito } = useContext(StoreContext);
+  const { activeUser, handleLogout } = useContext(AuthContext);
+  const { carrito, handleClear } = useContext(StoreContext);
   const totalItems = carrito.reduce((qty, car) => qty + car.qty, 0);
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    handleLogout();
+    handleClear();
+    navigate("/");
+  };
 
   return (
     <header>
@@ -28,9 +37,21 @@ const Navbar = () => {
         </div>
         <div className="right-container me-3">
           <input className="rounded-3" type="text" placeholder="Búsqueda" />
-          <Link to="login">
-            <i className="bi bi-person-fill"></i>
-          </Link>
+          {activeUser ? (
+            <div className="d-flex align-items-center">
+              <p className="m-0">Hola {activeUser.nombre}!</p>
+              <button
+                onClick={onLogout}
+                className="ms-2 btn btn-outline-danger"
+              >
+                Salir
+              </button>
+            </div>
+          ) : (
+            <Link to="login">
+              <i className="bi bi-person-fill"></i>
+            </Link>
+          )}
           <Link to="/carrito">
             <i className="bi bi-cart-fill"></i>
             {totalItems}

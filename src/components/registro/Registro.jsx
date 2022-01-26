@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import "./Registro.css";
 
 const Registro = () => {
+  const { users, handleAddUsers } = useContext(AuthContext);
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [usuario, setUsuario] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const formReset = () => {
     setNombre("");
@@ -31,9 +35,20 @@ const Registro = () => {
       usuario,
       pass,
     };
-    console.log(user);
+    OnAddUser(user);
+  };
+
+  const OnAddUser = (user) => {
+    const exist = users.find(
+      (us) => us.email === user.email || us.usuario === user.usuario
+    );
+    if (exist) {
+      return setError("El email o el usuario ya estan registrados");
+    }
+    handleAddUsers(user);
     setError("");
     formReset();
+    navigate("/login");
   };
 
   return (
@@ -89,6 +104,9 @@ const Registro = () => {
             min={0}
           />
         </div>
+        <Link to="/login">
+          <p className="registro-btn">¿Ya tenés una cuenta? Iniciá sesión</p>
+        </Link>
         <div className="form-btn">
           <button className="btn btn-light" type="submit">
             Enviar
