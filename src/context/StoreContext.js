@@ -1,11 +1,10 @@
 import { createContext, useEffect, useState } from "react";
-import { initialOfertas, initialProducts } from "../data/data";
+import { initialProducts } from "../data/data";
 
 export const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState(initialProducts); //estado de productos
-  const [ofertas, setOfertas] = useState(initialOfertas); //estado de ofertas
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito")) ?? []
   ); //estado de carrito con LS
@@ -71,9 +70,8 @@ const StoreProvider = ({ children }) => {
     <StoreContext.Provider
       value={{
         products,
-        setProducts,
-        ofertas,
         carrito,
+        setProducts,
         setCarrito,
         handleAdd,
         handleAddQty,

@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
+import ErrorForm from "../../assets/errorForm/ErrorForm";
 
 import "./Registro.css";
 
@@ -60,9 +61,7 @@ const Registro = () => {
       <form onSubmit={handleSubmit} className="form-registro">
         <div className="title d-flex flex-column">
           <h2 className="text-center">Registrarse</h2>
-          {error !== "" && (
-            <h3 className="text-light text-center bg-danger">{error}</h3>
-          )}
+          {error !== "" && <ErrorForm error={error} />}
         </div>
         <div className="form-item">
           <label htmlFor="fullName">Nombre</label>

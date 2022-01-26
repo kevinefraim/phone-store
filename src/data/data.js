@@ -181,7 +181,7 @@ export const initialProducts = [
   },
 ];
 
-export const initialOfertas = [
+export const ofertas = [
   {
     id: "17",
     nombre: "Apple iPhone X",
