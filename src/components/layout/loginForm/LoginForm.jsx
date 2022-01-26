@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import ErrorForm from "../../assets/errorForm/ErrorForm";
 
 const LoginForm = ({
+  children,
   error,
   usuario,
   pass,
@@ -36,9 +36,7 @@ const LoginForm = ({
           min={0}
         />
       </div>
-      <Link to="/registro">
-        <p className="registro-btn">¿No tenés una cuenta? Registrate</p>
-      </Link>
+      {children}
       <div className="form-btn">
         <button className="btn btn-light" type="submit">
           Enviar

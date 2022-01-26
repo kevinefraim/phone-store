@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import LoginForm from "../../layout/loginForm/LoginForm";
 
@@ -61,7 +61,11 @@ const LogIn = () => {
         handleLog={handleLog}
         setUsuario={setUsuario}
         setPass={setPass}
-      />
+      >
+        <Link to="/registro">
+          <p className="registro-btn">¿No tenés una cuenta? Registrate</p>
+        </Link>
+      </LoginForm>
     </main>
   );
 };

@@ -1,9 +1,7 @@
+import AdminContainer from "../../components/admin/adminContainer/AdminContainer";
+
 const Admin = () => {
-  return (
-    <div>
-      <h1>admin</h1>
-    </div>
-  );
+  return <AdminContainer />;
 };
 
 export default Admin;
