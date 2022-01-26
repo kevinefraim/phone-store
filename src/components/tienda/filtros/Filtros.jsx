@@ -1,8 +1,16 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import "./Filtros.css";
 
 const Filtros = () => {
+  const [isActive, setIsActive] = useState("");
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setIsActive(pathname);
+  }, [pathname]);
+
   return (
     <div className="col-md-3  mt-4 filter-container">
       <div className="filter-title">
@@ -11,25 +19,59 @@ const Filtros = () => {
       <div className="list">
         <ul className="filter-list">
           <Link to="/tienda">
-            <li>Mostrar todo</li>
+            <li className={isActive === "/tienda" ? "active" : null}>
+              Todos los productos
+            </li>
           </Link>
           <Link to="/tienda/category/Apple">
-            <li>Apple</li>
+            <li
+              className={
+                isActive === "/tienda/category/Apple" ? "active" : null
+              }
+            >
+              Apple
+            </li>
           </Link>
           <Link to="/tienda/category/Samsung">
-            <li>Samsung</li>
+            <li
+              className={
+                isActive === "/tienda/category/Samsung" ? "active" : null
+              }
+            >
+              Samsung
+            </li>
           </Link>
           <Link to="/tienda/category/Motorola">
-            <li>Motorola</li>
+            <li
+              className={
+                isActive === "/tienda/category/Motorola" ? "active" : null
+              }
+            >
+              Motorola
+            </li>
           </Link>
           <Link to="/tienda/category/Sony">
-            <li>Sony</li>
+            <li
+              className={isActive === "/tienda/category/Sony" ? "active" : null}
+            >
+              Sony
+            </li>
           </Link>
           <Link to="/tienda/category/TCL">
-            <li>TCL</li>
+            <li
+              className={isActive === "/tienda/category/TCL" ? "active" : null}
+            >
+              TCL
+            </li>
           </Link>
           <Link to="/tienda/category/Google">
-            <li>Google</li>
+            <li
+              className={
+                isActive === "/tienda/category/Google" ? "active" : null
+              }
+            >
+              Google
+            </li>
           </Link>
         </ul>
       </div>

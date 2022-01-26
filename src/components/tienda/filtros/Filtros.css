@@ -20,6 +20,15 @@
   margin: 10px 0;
   color: var(--blue);
   text-decoration: underline;
+  font-weight: 600;
+}
+
+.filter-list li:hover {
+  color: #096096;
+}
+
+.active {
+  color: #10354e !important;
 }
 
 @media (max-width: 780px) {
