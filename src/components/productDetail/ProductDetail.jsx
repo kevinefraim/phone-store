@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../context/AuthContext";
 import { StoreContext } from "../../context/StoreContext";
 import "./ProductDetail.css";
 
@@ -23,7 +24,9 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const { products, handleAdd } = useContext(StoreContext);
+  const { activeUser } = useContext(AuthContext);
   const { id } = useParams();
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setProduct(products.find((prod) => prod.id === id));
@@ -36,13 +39,25 @@ const ProductDetail = () => {
   };
 
   const onAdd = () => {
+    if (activeUser === null)
+      return setError("Inicia sesión para agregar al carrito");
     handleAdd(product, quantity);
     setAdded(true);
     addAlert();
+    setError("");
   };
 
   return (
     <main className="container-fluid">
+      {error !== "" && (
+        <div className="error">
+          <Link to="/login">
+            <h4 className="text-center bg-danger text-light mt-5 p-2">
+              {error}
+            </h4>
+          </Link>
+        </div>
+      )}
       <div className="detalle-container">
         <img
           height={800}

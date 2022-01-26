@@ -27,6 +27,13 @@
 .qty-select select {
   width: 100%;
 }
+.error {
+  display: flex;
+  justify-content: center;
+}
+.error h4 {
+  text-decoration: underline;
+}
 
 @media (max-width: 500px) {
   .detalle-container {
