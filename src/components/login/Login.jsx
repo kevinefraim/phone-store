@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
 
 const LogIn = () => {
+  const { users, handleActiveUser } = useContext(AuthContext);
   const [usuario, setUsuario] = useState("");
   const [pass, setPass] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   //reset form
   const formReset = () => {
@@ -15,12 +19,32 @@ const LogIn = () => {
   //funcion de login
   const handleLog = (e) => {
     e.preventDefault();
+
+    if ([usuario, pass].includes("")) {
+      return setError("Hay campos vacios");
+    }
+
     const user = {
       usuario,
       pass,
     };
-    console.log(user);
+
+    onActiveUser(user);
+  };
+
+  const onActiveUser = (user) => {
+    const existUser = users.find(
+      (us) => us.usuario === user.usuario && us.pass === user.pass
+    );
+
+    if (!existUser) {
+      return setError("No existe un usuario con ese estos datos");
+    }
+
+    handleActiveUser(existUser);
+    setError("");
     formReset();
+    navigate("/");
   };
 
   return (
@@ -29,13 +53,17 @@ const LogIn = () => {
       style={{ height: "100vh" }}
     >
       <form onSubmit={handleLog} className="form-login">
-        <div className="title">
-          <h1>Inicia Sesión</h1>
+        <div className="title d-flex flex-column">
+          <h2 className="text-center">Inicia Sesión</h2>
+          {error !== "" && (
+            <h3 className="text-light text-center bg-danger">{error}</h3>
+          )}
         </div>
         <div className="form-item">
           <label htmlFor="user">Nombre de Usuario</label>
           <input
             onChange={({ target }) => setUsuario(target.value)}
+            value={usuario}
             type="text"
             name="user"
             placeholder="Ingrese su usuario"
@@ -45,6 +73,7 @@ const LogIn = () => {
           <label htmlFor="password">Contraseña</label>
           <input
             onChange={({ target }) => setPass(target.value)}
+            value={pass}
             type="password"
             name="password"
             placeholder="Ingrese su contraseña"
