@@ -5,7 +5,7 @@ import Navbar from "./components/layout/navbar/Navbar";
 import Home from "./pages/home/Home";
 import Tienda from "./pages/tienda/Tienda";
 import ProductDetail from "./components/tienda/productDetail/ProductDetail";
-import ProductosBuscados from "./components/tienda/productosBuscados/ProductosBuscados";
+import ProductosBuscados from "./components/tienda/productDetail/ProductDetail";
 import Contacto from "./pages/contacto/Contacto";
 import Carrito from "./components/tienda/carrito/Carrito";
 import LogIn from "./components/auth/login/Login";
