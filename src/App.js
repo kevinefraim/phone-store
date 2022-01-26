@@ -5,6 +5,7 @@ import Navbar from "./components/layout/navbar/Navbar";
 import Home from "./pages/home/Home";
 import Tienda from "./pages/tienda/Tienda";
 import ProductDetail from "./components/tienda/productDetail/ProductDetail";
+import ProductosBuscados from "./components/tienda/productosBuscados/ProductosBuscados";
 import Contacto from "./pages/contacto/Contacto";
 import Carrito from "./components/tienda/carrito/Carrito";
 import LogIn from "./components/auth/login/Login";
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/tienda" element={<Tienda />} />
             <Route path="/tienda/category/:cat" element={<Tienda />} />
             <Route path="/tienda/:id" element={<ProductDetail />} />
+            <Route path="/search" element={<ProductosBuscados />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/registro" element={<Registro />} />

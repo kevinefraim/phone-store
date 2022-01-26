@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import { StoreContext } from "../../../context/StoreContext";
 import ResponsiveMenu from "../responsiveMenu/ResponsiveMenu";
+import Buscador from "../buscador/Buscador";
 import logo from "../../../assets/img/logo/logo.png";
 
 import "./Navbar.css";
@@ -40,7 +41,7 @@ const Navbar = () => {
           <ResponsiveMenu />
         </div>
         <div className="right-container me-3">
-          <input className="rounded-3" type="text" placeholder="Búsqueda" />
+          <Buscador />
           {activeUser ? (
             <div className="d-flex align-items-center">
               <p className="m-0">Hola {activeUser.nombre}!</p>

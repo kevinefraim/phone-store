@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import { StoreContext } from "../../../context/StoreContext";
+import { ofertas } from "../../../data/data";
 import Cards from "../../layout/cards/Cards";
 
 import "./Ofertas.css";
 
 const Ofertas = () => {
-  const { ofertas } = useContext(StoreContext);
-
   return (
     <div className="container-fluid">
       <div className="card-title">
