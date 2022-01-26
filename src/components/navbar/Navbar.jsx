@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { StoreContext } from "../../context/StoreContext";
 import logo from "../../assets/img/logo/logo.png";
 import "./Navbar.css";
-import { ResponsiveMenu } from "../responsiveMenu/ResponsiveMenu";
+import ResponsiveMenu from "../responsiveMenu/ResponsiveMenu";
 
 const Navbar = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
@@ -57,9 +57,9 @@ const Navbar = () => {
               <i className="bi bi-person-fill"></i>
             </Link>
           )}
-          <Link to="/carrito">
+          <Link to="/carrito" className="d-flex">
             <i className="bi bi-cart-fill"></i>
-            {totalItems}
+            <span className="me-2">{totalItems}</span>
           </Link>
         </div>
       </nav>

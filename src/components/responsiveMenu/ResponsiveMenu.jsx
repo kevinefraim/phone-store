@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { StoreContext } from "../../context/StoreContext";
 import { Link, useNavigate } from "react-router-dom";
 import "./ResponsiveMenu.css";
-export const ResponsiveMenu = () => {
+const ResponsiveMenu = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
   const { handleClear } = useContext(StoreContext);
   const navigate = useNavigate();
@@ -62,3 +62,4 @@ export const ResponsiveMenu = () => {
     </div>
   );
 };
+export default ResponsiveMenu;
