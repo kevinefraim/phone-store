@@ -81,12 +81,10 @@ const Carrito = () => {
                   </td>
                   <td className="fw-bolder">${car.precio * car.qty}</td>
                   <td>
-                    <button
+                    <i
                       onClick={() => handleDelete(car.id)}
-                      className="btn btn-danger"
-                    >
-                      X
-                    </button>
+                      className="bi bi-trash-fill"
+                    ></i>
                   </td>
                 </tr>
               ))}

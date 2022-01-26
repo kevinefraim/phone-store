@@ -12,6 +12,7 @@ import LogIn from "./components/auth/login/Login";
 import Registro from "./components/auth/registro/Registro";
 import Admin from "./pages/admin/Admin";
 import AdminLogin from "./components/admin/login/AdminLogin";
+import Form from "./components/form/Form";
 
 const App = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/login" element={<LogIn />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/form" element={<Form />} />
         </Routes>
       </StoreProvider>
     </AuthProvider>

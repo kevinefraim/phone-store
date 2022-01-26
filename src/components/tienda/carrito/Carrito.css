@@ -12,6 +12,14 @@
 .modify-cart button {
   width: 35px;
 }
+.bi-trash-fill {
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #f00;
+}
+.bi-trash-fill:hover {
+  color: rgb(235, 99, 99);
+}
 
 @media (max-width: 650px) {
   .prod-container {
