@@ -1,4 +1,3 @@
-import iphone from "../../../assets/img/slider/galaxy.png";
 import samsung from "../../../assets/img/slider/phones.png";
 import "./Slider.css";
 

@@ -4,10 +4,16 @@ import { initialProducts } from "../data/data";
 export const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
-  const [products, setProducts] = useState(initialProducts); //estado de productos
+  const [products, setProducts] = useState(
+    JSON.parse(localStorage.getItem("products")) ?? initialProducts
+  ); //estado de productos
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito")) ?? []
   ); //estado de carrito con LS
+
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(products));
+  }, [carrito]);
 
   //seteando items de carrito en LS
   useEffect(() => {
