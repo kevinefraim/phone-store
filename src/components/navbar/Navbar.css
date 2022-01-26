@@ -45,7 +45,7 @@
   font-weight: 600;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 680px) {
   .nav-container {
     flex-direction: column;
   }

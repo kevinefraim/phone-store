@@ -1,16 +1,31 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+
 import { StoreContext } from "../../context/StoreContext";
 import "./Carrito.css";
+import { AuthContext } from "../../context/AuthContext";
 
 const Carrito = () => {
-  const { carrito, handleAddQty, handleSub, handleDelete, handleClear } =
-    useContext(StoreContext);
+  const {
+    carrito,
+    setCarrito,
+    handleAddQty,
+    handleSub,
+    handleDelete,
+    handleClear,
+  } = useContext(StoreContext);
+  const { activeUser } = useContext(AuthContext);
 
   const carTotal = carrito.reduce(
     (price, car) => price + car.precio * car.qty,
     0
   );
+
+  //submit compra
+  const submitCompra = () => {
+    alert("compra realizada");
+    setCarrito([]);
+  };
 
   return (
     <main className="container-fluid my-2 p-0">
@@ -83,7 +98,9 @@ const Carrito = () => {
               Vaciar carrito
             </button>
             <h5 className="fw-bolder m-3">Total: ${carTotal}</h5>
-            <button className="btn btn-primary">Confirmar compra</button>
+            <button onClick={submitCompra} className="btn btn-primary">
+              Confirmar compra
+            </button>
           </div>
         </div>
       )}

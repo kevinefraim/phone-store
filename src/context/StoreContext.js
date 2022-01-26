@@ -60,6 +60,7 @@ const StoreProvider = ({ children }) => {
         setProducts,
         ofertas,
         carrito,
+        setCarrito,
         handleAdd,
         handleAddQty,
         handleSub,
