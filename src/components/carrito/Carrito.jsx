@@ -40,7 +40,7 @@ const Carrito = () => {
         <div>
           <table className="table">
             <thead>
-              <tr>
+              <tr className="table-header">
                 <th scope="col">Imagen</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Precio unitario</th>
@@ -49,22 +49,23 @@ const Carrito = () => {
                 <th scope="col">Eliminar</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="prod-container">
               {carrito.map((car) => (
-                <tr key={car.id}>
+                <tr className="prod-cart" key={car.id}>
                   <td>
                     <img
                       width={50}
                       src={`${process.env.PUBLIC_URL}/assets/productos/${car.img}.png`}
                       alt={car.nombre}
+                      className="prod-img"
                     />
                   </td>
-                  <td>
+                  <td className="w-25">
                     <h4>{car.nombre}</h4>
                   </td>
                   <td className="fw-bolder">${car.precio}</td>
                   <td>
-                    <div className="d-flex flex-wrap">
+                    <div className="d-flex modify-cart">
                       <button
                         onClick={() => handleAddQty(car)}
                         className="btn btn-primary"
