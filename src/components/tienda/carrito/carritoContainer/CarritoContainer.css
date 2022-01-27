@@ -6,7 +6,7 @@
   font-size: 90% !important;
 }
 
-.title-cart h1 {
+.title-cart h2 {
   border-bottom: var(--blue) 2px solid;
   padding-bottom: 2px;
 }
