@@ -16,7 +16,7 @@ const addAlert = (mensaje) => {
     padding: "2rem",
     position: "center",
     showConfirmButton: false,
-    timer: 900,
+    timer: 1500,
     customClass: {
       title: "alert-title",
     },

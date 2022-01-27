@@ -46,8 +46,7 @@ const AdminContainer = () => {
   };
 
   //Evento que sucede cuando hacemos submit en el form de agregar/editar
-  const handleSubmit = (e, product, imagen) => {
-    e.preventDefault();
+  const handleSubmit = (product, imagen) => {
     if (activeProduct) {
       handleEdit(activeProduct, product);
     } else {

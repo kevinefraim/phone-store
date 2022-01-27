@@ -24,13 +24,16 @@ const ModalForm = ({
     desc: descForm,
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if ([nombreForm, marcaForm, precioForm, descForm].includes("")) return;
+    handleSubmit(product, imagenForm);
+  };
+
   return (
     <div className="form-container">
       <h2>{activeProduct ? "Editar producto" : "Agregar producto"}</h2>
-      <form
-        onSubmit={(e) => handleSubmit(e, product, imagenForm)}
-        className="form-modal"
-      >
+      <form onSubmit={onSubmit} className="form-modal">
         {!activeProduct && (
           <div className="form-item">
             <label htmlFor="img">Imágen</label>
