@@ -68,7 +68,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       onClick={onLogout}
-                      className="dropdown-item text-danger"
+                      className="dropdown-item text-danger fw-bolder"
                       to="/compras"
                     >
                       Cerrar sesión

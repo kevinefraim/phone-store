@@ -74,7 +74,7 @@ const CarritoContainer = () => {
   return (
     <main className="container-fluid my-2 p-0">
       <div className="title-cart">
-        <h1 className="mb-4">Carrito de compras</h1>
+        <h2 className="mb-4">Carrito de compras</h2>
       </div>
       {carrito.length === 0 ? (
         <h2 className="text-center mt-5">

@@ -32,7 +32,7 @@ const ResponsiveMenu = () => {
       <div className="nav-responsive-list">
         <div className="col">
           <div className="collapse multi-collapse" id="multiCollapseExample1">
-            <ul className="ul-responsive p-0">
+            <ul className="ul-responsive p-1">
               <button className="btn btn-light mt-1 rounded-pill p-2">
                 <Link to="/">Inicio</Link>
               </button>
@@ -42,20 +42,6 @@ const ResponsiveMenu = () => {
               <button className="btn btn-light mt-1 rounded-pill p-2">
                 <Link to="/contacto">Contacto</Link>
               </button>
-
-              {activeUser ? (
-                <button className=" btn btn-danger mt-1 rounded-pill p-1 mb-1">
-                  <p className="m-0" onClick={onLogout}>
-                    Salir
-                  </p>
-                </button>
-              ) : (
-                <button className=" btn btn-light mt-1 rounded-pill p-1 ">
-                  <Link to="/login">
-                    <p className="m-0">LogIn</p>
-                  </Link>
-                </button>
-              )}
             </ul>
           </div>
         </div>

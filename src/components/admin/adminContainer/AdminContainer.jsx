@@ -51,9 +51,10 @@ const AdminContainer = () => {
     if (activeProduct) {
       handleEdit(activeProduct, product);
     } else {
+      const date = new Date().getTime();
       const newProduct = {
         ...product,
-        id: new Date().getTime(),
+        id: date.toString(),
         img: imagen,
       };
       handleAddAdmin(newProduct);
@@ -93,6 +94,7 @@ const AdminContainer = () => {
         handleSearch={handleSearch}
       />
       <ItemList
+        searchValue={searchValue}
         products={products}
         handleDeleteAdmin={handleDeleteAdmin}
         setActiveProduct={setActiveProduct}
