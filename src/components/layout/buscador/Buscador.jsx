@@ -7,6 +7,7 @@ const Buscador = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (value === "") return;
     navigate(`/search?q=${value}`);
     setValue("");
   };
