@@ -1,12 +1,14 @@
-import { useContext } from "react";
-import { StoreContext } from "../../../context/StoreContext";
 import Item from "../item/Item";
 
 import "./ItemList.css";
 
-const ItemList = ({ setActiveProduct, openModal }) => {
-  const { products, handleDeleteAdmin } = useContext(StoreContext);
-
+const ItemList = ({
+  products,
+  handleDeleteAdmin,
+  setActiveProduct,
+  openModal,
+  productsFiltered,
+}) => {
   const onEdit = (product) => {
     setActiveProduct(product);
     openModal();
@@ -29,15 +31,25 @@ const ItemList = ({ setActiveProduct, openModal }) => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <Item
-              key={product.id}
-              {...product}
-              onEdit={onEdit}
-              product={product}
-              handleDeleteAdmin={handleDeleteAdmin}
-            />
-          ))}
+          {productsFiltered.length > 0
+            ? productsFiltered.map((product) => (
+                <Item
+                  key={product.id}
+                  {...product}
+                  onEdit={onEdit}
+                  product={product}
+                  handleDeleteAdmin={handleDeleteAdmin}
+                />
+              ))
+            : products.map((product) => (
+                <Item
+                  key={product.id}
+                  {...product}
+                  onEdit={onEdit}
+                  product={product}
+                  handleDeleteAdmin={handleDeleteAdmin}
+                />
+              ))}
         </tbody>
       </table>
     </section>

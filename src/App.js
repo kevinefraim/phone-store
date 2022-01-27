@@ -47,7 +47,7 @@ const App = () => {
           </Route>
           <Route path="/carrito" element={<Carrito />} />
         </Routes>
-        <Footer />
+        {exclusion.indexOf(location.pathname) < 0 && <Footer />}
       </StoreProvider>
     </AuthProvider>
   );
