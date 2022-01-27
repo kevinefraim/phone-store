@@ -24,7 +24,7 @@ const CarritoTable = ({
       <td className="carrito-nombre w-25">
         <p>{nombre}</p>
       </td>
-      <td className="fw-bolder">${precio}</td>
+      <td className="mt-4 fw-bolder">${precio}</td>
       <td>
         <div className="d-flex modify-cart">
           <button onClick={() => handleAddQty(car)} className="btn btn-primary">

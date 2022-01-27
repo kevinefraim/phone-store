@@ -1,5 +1,10 @@
-@media (max-width: 780px) {
+/* @media (max-width: 770px) {
   .prod-container {
     margin: 0;
+  }
+} */
+@media (max-width: 767.5px) {
+  .prod-container {
+    display: none !important;
   }
 }

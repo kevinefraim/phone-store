@@ -6,15 +6,13 @@ const Cards = ({ nombre, precio, img, id }) => {
   return (
     <>
       <Link to={`/tienda/${id}`}>
-        <article className="shadow oferta-card">
+        <article className="ms-2 shadow oferta-card">
           <img
-            height={190}
-            width={250}
             className="product-img"
             src={`${process.env.PUBLIC_URL}/assets/productos/${img}.png`}
             alt={nombre}
           />
-          <div className="card-body  text-center fs-5 fw-bolder">
+          <div className="card-body p-0 text-center fs-5 fw-bolder">
             <h5 className="fs- fw-bolder">{nombre}</h5>
             <p>${precio}</p>
           </div>

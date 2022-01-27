@@ -83,7 +83,7 @@ const CarritoContainer = () => {
                 <th scope="col">Eliminar</th>
               </tr>
             </thead>
-            <tbody className="prod-container">
+            <tbody className="products-container">
               {carrito.map((car) => (
                 <CarritoTable
                   key={car.id}

@@ -2,6 +2,10 @@
   display: flex;
   justify-content: center;
 }
+.table {
+  font-size: 90% !important;
+}
+
 .title-cart h1 {
   border-bottom: var(--blue) 2px solid;
   padding-bottom: 2px;
@@ -22,7 +26,7 @@
 }
 
 @media (max-width: 650px) {
-  .prod-container {
+  .products-container {
     display: flex;
     flex-direction: column;
   }

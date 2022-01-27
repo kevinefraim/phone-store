@@ -62,6 +62,7 @@ const ProductDetail = () => {
       <div className="detalle-container">
         <img
           height={800}
+          className="img-responsive"
           src={`${process.env.PUBLIC_URL}/assets/productos/${product.img}.png`}
           style={{ objectFit: "contain" }}
           alt={product.nombre}
