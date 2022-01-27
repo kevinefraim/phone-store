@@ -1,11 +1,26 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
-import { StoreContext } from "../../../context/StoreContext";
 import { AuthContext } from "../../../context/AuthContext";
-import "./Carrito.css";
-import React, { useRef } from "react";
+import { StoreContext } from "../../../context/StoreContext";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
+
+import "./Carrito.css";
+
+//alerta
+const addAlert = (mensaje) => {
+  Swal.fire({
+    title: mensaje,
+    background: "#fff",
+    padding: "2rem",
+    position: "center",
+    showConfirmButton: false,
+    timer: 900,
+    customClass: {
+      title: "alert-title",
+    },
+  });
+};
 
 const Carrito = () => {
   const form = useRef();
@@ -24,20 +39,6 @@ const Carrito = () => {
     0
   );
 
-  //alerta
-  const addAlert = (mensaje) => {
-    Swal.fire({
-      title: mensaje,
-      background: "#fff",
-      padding: "2rem",
-      position: "center",
-      showConfirmButton: false,
-      timer: 900,
-      customClass: {
-        title: "alert-title",
-      },
-    });
-  };
   //funcion send email
   const sendEmail = () => {
     emailjs

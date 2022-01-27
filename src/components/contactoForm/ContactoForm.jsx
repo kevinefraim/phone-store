@@ -1,44 +1,54 @@
-import "./Contacto.css";
-import Swal from "sweetalert2";
 import { useState } from "react";
+import ErrorForm from "../assets/errorForm/ErrorForm";
 
-//alerta
-const addAlert = (mensaje) => {
-  Swal.fire({
-    title: mensaje,
-    background: "#fff",
-    padding: "2rem",
-    position: "center",
-    showConfirmButton: false,
-    timer: 900,
-    customClass: {
-      title: "alert-title",
-    },
-  });
-};
+import "./ContactoForm.css";
 
-const Contacto = () => {
+const ContactoForm = () => {
   const [nombre, setNombre] = useState("");
   const [tel, setTel] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const [error, setError] = useState("");
+  const [msg, setMsg] = useState("");
 
-  const contactSubmit = (e) => {
-    e.preventDefault();
-    if ([nombre, tel, mensaje].includes(""))
-      return addAlert("Completa todos los campos");
-    if (tel.length < 10) return addAlert("El número de telefono no existe");
-
-    addAlert("Tu mensaje ha sido enviado!");
+  const formReset = () => {
     setNombre("");
     setTel("");
     setMensaje("");
   };
+
+  const contactSubmit = (e) => {
+    e.preventDefault();
+
+    if ([nombre, tel, mensaje].includes("")) {
+      setError("Completa todos los campos");
+      return;
+    }
+
+    if (tel.length < 10) {
+      setError("El número de telefono no existe");
+      return;
+    }
+
+    setMsg("Tu mensaje ha sido enviado!");
+    setError("");
+    formReset();
+    setTimeout(() => {
+      setMsg("");
+    }, 2000);
+  };
+
   return (
     <main>
       <div className="contacto-container">
         <form onSubmit={contactSubmit} className="form-contacto">
-          <div className="title">
-            <h1>Contactanos!</h1>
+          <div className="title d-flex flex-column align-items-center">
+            <h2>Contactanos!</h2>
+            <div className="mt-3">
+              {msg !== "" && (
+                <h3 className="text-light bg-success p-2 rounded-3">{msg}</h3>
+              )}
+              {error !== "" && <ErrorForm error={error} />}
+            </div>
           </div>
           <div className="form-item">
             <label htmlFor="fullName">Nombre y apellido</label>
@@ -82,4 +92,4 @@ const Contacto = () => {
   );
 };
 
-export default Contacto;
+export default ContactoForm;
