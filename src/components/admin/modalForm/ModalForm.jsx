@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import "./ModalForm.css";
+import "./ModalForm";
 
 const ModalForm = ({
   handleSubmit,
