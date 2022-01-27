@@ -6,4 +6,7 @@
   .hide {
     display: none;
   }
+  .table {
+    font-size: 70%;
+  }
 }

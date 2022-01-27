@@ -4,10 +4,11 @@ import Item from "../item/Item";
 
 import "./ItemList.css";
 
-const ItemList = ({ openModal }) => {
-  const { products } = useContext(StoreContext);
+const ItemList = ({ setActiveProduct, openModal }) => {
+  const { products, handleDeleteAdmin } = useContext(StoreContext);
 
-  const onEdit = () => {
+  const onEdit = (product) => {
+    setActiveProduct(product);
     openModal();
   };
 
@@ -23,14 +24,19 @@ const ItemList = ({ openModal }) => {
             <th className="hide" scope="col">
               Descripción
             </th>
-            <th scope="col">Stock</th>
             <th scope="col">Editar</th>
             <th scope="col">Eliminar</th>
           </tr>
         </thead>
         <tbody>
           {products.map((product) => (
-            <Item key={product.id} {...product} onEdit={onEdit} />
+            <Item
+              key={product.id}
+              {...product}
+              onEdit={onEdit}
+              product={product}
+              handleDeleteAdmin={handleDeleteAdmin}
+            />
           ))}
         </tbody>
       </table>

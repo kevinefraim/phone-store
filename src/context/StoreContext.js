@@ -13,7 +13,7 @@ const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(products));
-  }, [carrito]);
+  }, [products]);
 
   //seteando items de carrito en LS
   useEffect(() => {
@@ -72,6 +72,26 @@ const StoreProvider = ({ children }) => {
     setCarrito([]);
   };
 
+  //Funciones de admin
+
+  const handleAddAdmin = (newProduct) => {
+    setProducts([newProduct, ...products]);
+  };
+
+  const handleEdit = (activeProduct, productToEdit) => {
+    setProducts(
+      products.map((product) =>
+        product.id === activeProduct.id
+          ? { ...product, ...productToEdit }
+          : product
+      )
+    );
+  };
+
+  const handleDeleteAdmin = (id) => {
+    setProducts(products.filter((product) => product.id !== id));
+  };
+
   return (
     <StoreContext.Provider
       value={{
@@ -84,6 +104,9 @@ const StoreProvider = ({ children }) => {
         handleSub,
         handleDelete,
         handleClear,
+        handleAddAdmin,
+        handleEdit,
+        handleDeleteAdmin,
       }}
     >
       {children}

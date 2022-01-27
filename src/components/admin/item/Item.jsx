@@ -1,6 +1,16 @@
 import "./Item.css";
 
-const Item = ({ img, nombre, marca, precio, desc, stock, onEdit }) => {
+const Item = ({
+  product,
+  id,
+  img,
+  nombre,
+  marca,
+  precio,
+  desc,
+  onEdit,
+  handleDeleteAdmin,
+}) => {
   return (
     <tr>
       <td>
@@ -14,12 +24,14 @@ const Item = ({ img, nombre, marca, precio, desc, stock, onEdit }) => {
       <td>{marca}</td>
       <td>{precio}</td>
       <td className="hide">{desc}</td>
-      <td>{stock}</td>
       <td>
-        <i onClick={onEdit} className="bi bi-pencil-square"></i>
+        <i onClick={() => onEdit(product)} className="bi bi-pencil-square"></i>
       </td>
       <td>
-        <i className="bi bi-trash-fill"></i>
+        <i
+          onClick={() => handleDeleteAdmin(id)}
+          className="bi bi-trash-fill"
+        ></i>
       </td>
     </tr>
   );

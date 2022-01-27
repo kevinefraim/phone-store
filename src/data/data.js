@@ -6,7 +6,6 @@ export const initialProducts = [
     marca: "Apple",
     desc: "Apple Iphone 11 128GB, Gold - Unlocked",
     img: "iphone11",
-    stock: 10,
   },
   {
     id: "2",
@@ -15,7 +14,6 @@ export const initialProducts = [
     marca: "Apple",
     desc: "Apple Iphone 12 Pro Max 128GB, Graphite - Unlocked",
     img: `iphone12pro`,
-    stock: 4,
   },
   {
     id: "3",
@@ -33,7 +31,6 @@ export const initialProducts = [
     marca: "Samsung",
     desc: "Samsung Galaxy A32 5G - Awesome Blue - Factory Unlocked",
     img: `galaxy-a32`,
-    stock: 12,
   },
   {
     id: "5",
@@ -42,7 +39,6 @@ export const initialProducts = [
     marca: "Motorola",
     desc: "Motorola G Power 2021 - Gray - 64GB - 48MP Camera",
     img: `moto-gPower`,
-    stock: 8,
   },
   {
     id: "6",
@@ -51,7 +47,6 @@ export const initialProducts = [
     marca: "Samsung",
     desc: "Samsung Galaxy A52 2021 - Black - 128GB - 64MP Camera",
     img: `galaxy-a52`,
-    stock: 5,
   },
   {
     id: "7",
@@ -60,7 +55,6 @@ export const initialProducts = [
     marca: "Samsung",
     desc: "Samsung Galaxy A12 2021 - Black - 32GB - 64MP Camera",
     img: `galaxy-a12`,
-    stock: 12,
   },
   {
     id: "8",
@@ -69,7 +63,6 @@ export const initialProducts = [
     marca: "Samsung",
     desc: "Samsung Galaxy S20 FE 5G - Cloud Red - 128GB - Factory Unlocked",
     img: `galaxy-s20`,
-    stock: 3,
   },
   {
     id: "9",
@@ -78,7 +71,6 @@ export const initialProducts = [
     marca: "TCL",
     desc: "TCL 10 SE 2021 - Polar Night- 4GB RAM - 16MP Camera - Unlocked",
     img: `tcl10`,
-    stock: 2,
   },
   {
     id: "10",
@@ -87,7 +79,6 @@ export const initialProducts = [
     marca: "Google",
     desc: "Google Pixel 6 5G - Stormy Black - 256GB - Ultrawide lens - Unlocked",
     img: `pixel6`,
-    stock: 8,
   },
   {
     id: "11",
@@ -96,7 +87,6 @@ export const initialProducts = [
     marca: "Motorola",
     desc: "Motorola Edge 20 Pro 5G - Midnight Blue - 256GB - Multi-Camera System - Unlocked",
     img: `moto-edge20`,
-    stock: 4,
   },
   {
     id: "12",
@@ -105,7 +95,6 @@ export const initialProducts = [
     marca: "Sony",
     desc: "Sony Xperia 5 III 5G - Black - 128GB - Triple Camera - Unlocked",
     img: `xperia5`,
-    stock: 10,
   },
   {
     id: "13",
@@ -123,7 +112,6 @@ export const initialProducts = [
     marca: "Apple",
     desc: "Apple iPhone XR - Blue - 64GB - US Version - Unlocked",
     img: `iphone-xr`,
-    stock: 2,
   },
   {
     id: "15",
@@ -132,7 +120,6 @@ export const initialProducts = [
     marca: "Motorola",
     desc: "Motorola G Stylus 5G - Blue - 128GB  - Unlocked",
     img: `moto-gStylus`,
-    stock: 8,
   },
   {
     id: "16",
@@ -146,11 +133,10 @@ export const initialProducts = [
   {
     id: "17",
     nombre: "Apple iPhone X",
-    precio: 370,
+    preio: 370,
     marca: "Apple",
     desc: "Apple iPhone X - Silver - 256GB  - Unlocked",
     img: `iphone-x`,
-    stock: 14,
   },
   {
     id: "18",
@@ -159,7 +145,6 @@ export const initialProducts = [
     marca: "Apple",
     desc: "Apple iPhone 8 - Gold - 64GB  - Unlocked",
     img: `iphone8`,
-    stock: 10,
   },
   {
     id: "19",
@@ -168,7 +153,6 @@ export const initialProducts = [
     marca: "Apple",
     desc: "Apple iPhone 8 Plus - Gold - 64GB  - Unlocked",
     img: `iphone8-plus`,
-    stock: 6,
   },
   {
     id: "20",
@@ -177,7 +161,6 @@ export const initialProducts = [
     marca: "Samsung",
     desc: "Samsung Galaxy Z Fold - Phantom Black - 256GB - Foldable - Unlocked",
     img: `galaxy-fold`,
-    stock: 8,
   },
 ];
 
@@ -189,7 +172,6 @@ export const ofertas = [
     marca: "Apple",
     desc: "Apple iPhone X - Silver - 256GB  - Unlocked",
     img: `iphone-x`,
-    stock: 14,
   },
   {
     id: "8",
@@ -198,7 +180,6 @@ export const ofertas = [
     marca: "Samsung",
     desc: "Samsung Galaxy S20 FE 5G - Cloud Red - 128GB - Factory Unlocked",
     img: `galaxy-s20`,
-    stock: 3,
   },
   {
     id: "9",
@@ -207,7 +188,6 @@ export const ofertas = [
     marca: "TCL",
     desc: "TCL 10 SE 2021 - Polar Night- 4GB RAM - 16MP Camera - Unlocked",
     img: `tcl10`,
-    stock: 2,
   },
   {
     id: "16",
@@ -216,6 +196,5 @@ export const ofertas = [
     marca: "Samsung",
     desc: "Samsung Galaxy S8 - Midnight Black - 64GB  - Unlocked",
     img: `galaxy-s8`,
-    stock: 5,
   },
 ];
