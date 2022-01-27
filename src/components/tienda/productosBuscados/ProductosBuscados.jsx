@@ -14,8 +14,10 @@ const ProductosBuscados = () => {
     setProductsSearched(
       products.filter(
         (prod) =>
-          prod.nombre.toLowerCase().includes(searchParam) ||
-          prod.marca.toLowerCase().includes(searchParam)
+          prod.nombre
+            .toLowerCase()
+            .includes(searchParam.trim().toLowerCase()) ||
+          prod.marca.toLowerCase().includes(searchParam.trim().toLowerCase())
       )
     );
   }, [search]);

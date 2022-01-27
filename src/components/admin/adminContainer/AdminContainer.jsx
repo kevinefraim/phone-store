@@ -66,8 +66,10 @@ const AdminContainer = () => {
     setProductsFiltered(
       products.filter(
         (product) =>
-          product.nombre.toLowerCase().includes(searchValue) ||
-          product.marca.toLowerCase().includes(searchValue)
+          product.nombre
+            .toLowerCase()
+            .includes(searchValue.trim().toLowerCase()) ||
+          product.marca.toLowerCase().includes(searchValue.trim().toLowerCase())
       )
     );
   };
