@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import { StoreContext } from "../../../context/StoreContext";
 import CompraDetail from "../compraDetail/CompraDetail";
+import "./CompraContainer.css";
 
 const CompraContainer = () => {
   const { activeUser } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const CompraContainer = () => {
 
   return (
     <section>
-      <div className="text-center mt-3">
+      <div className="title-compras">
         <h2>Mis compras</h2>
       </div>
       <table className="table">

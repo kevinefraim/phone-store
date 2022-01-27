@@ -48,10 +48,10 @@ const CarritoContainer = () => {
       .sendForm("gmail", "compra", form.current, "user_piv4O1t75gRunvQxYZAjJ")
       .then(
         (result) => {
-          console.log(result.text);
+          // console.log(result.text);
         },
         (error) => {
-          console.log(error.text);
+          // console.log(error.text);
         }
       );
   };
@@ -74,7 +74,7 @@ const CarritoContainer = () => {
   return (
     <main className="container-fluid my-2 p-0">
       <div className="title-cart">
-        <h1 className="mb-4">Carrito de compras</h1>
+        <h2 className="mb-4">Carrito de compras</h2>
       </div>
       {carrito.length === 0 ? (
         <h2 className="text-center mt-5">
