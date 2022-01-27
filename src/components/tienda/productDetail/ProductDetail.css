@@ -35,6 +35,8 @@
   .detalle-container {
     flex-direction: column-reverse;
   }
+}
+@media (max-width: 880px) {
   .img-responsive {
     margin-top: 10px;
     height: 300px;
