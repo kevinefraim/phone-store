@@ -92,8 +92,8 @@ const Carrito = () => {
                       className="prod-img"
                     />
                   </td>
-                  <td className="w-25">
-                    <h4>{car.nombre}</h4>
+                  <td className="carrito-nombre w-25">
+                    <p>{car.nombre}</p>
                   </td>
                   <td className="fw-bolder">${car.precio}</td>
                   <td>
