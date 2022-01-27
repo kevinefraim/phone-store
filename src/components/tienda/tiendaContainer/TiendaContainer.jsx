@@ -21,7 +21,10 @@ const TiendaContainer = () => {
       <div className="col-md-9 container-fluid row mt-5 prod-container">
         {prodFiltered.length > 0
           ? prodFiltered.map((product) => (
-              <div key={product.id} className="col-lg-4 col-md-6">
+              <div
+                key={product.id}
+                className="col-lg-4 col-md-6 card-responsive p-0"
+              >
                 <Cards {...product} />
               </div>
             ))

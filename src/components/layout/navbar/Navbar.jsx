@@ -65,14 +65,12 @@ const Navbar = () => {
                       Mis compras
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      onClick={onLogout}
-                      className="dropdown-item text-danger fw-bolder"
-                      to="/compras"
-                    >
-                      Cerrar sesión
-                    </Link>
+                  <li
+                    onClick={onLogout}
+                    className="dropdown-item text-danger fw-bolder"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Cerrar sesión
                   </li>
                 </ul>
               </div>
