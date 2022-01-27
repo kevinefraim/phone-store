@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/phone-store/static/css/main.7360f387.css",
-    "main.js": "/phone-store/static/js/main.c2d8c80e.js",
+    "main.js": "/phone-store/static/js/main.5b8da648.js",
     "static/media/phones.png": "/phone-store/static/media/phones.b43326371c6969018800.png",
     "static/media/bootstrap-icons.woff?": "/phone-store/static/media/bootstrap-icons.38c4d2499557ae0379fd.woff",
     "static/media/bootstrap-icons.woff2?": "/phone-store/static/media/bootstrap-icons.2b56e79ae5013246de29.woff2",
     "static/media/logo.png": "/phone-store/static/media/logo.644b341245220c4634cb.png",
     "index.html": "/phone-store/index.html",
     "main.7360f387.css.map": "/phone-store/static/css/main.7360f387.css.map",
-    "main.c2d8c80e.js.map": "/phone-store/static/js/main.c2d8c80e.js.map"
+    "main.5b8da648.js.map": "/phone-store/static/js/main.5b8da648.js.map"
   },
   "entrypoints": [
     "static/css/main.7360f387.css",
-    "static/js/main.c2d8c80e.js"
+    "static/js/main.5b8da648.js"
   ]
 }
