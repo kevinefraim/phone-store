@@ -3,6 +3,7 @@ import Item from "../item/Item";
 import "./ItemList.css";
 
 const ItemList = ({
+  searchValue,
   products,
   handleDeleteAdmin,
   setActiveProduct,
@@ -31,8 +32,17 @@ const ItemList = ({
           </tr>
         </thead>
         <tbody>
-          {productsFiltered.length > 0
-            ? productsFiltered.map((product) => (
+          {searchValue?.length > 0 ? (
+            productsFiltered.length === 0 ? (
+              <tr>
+                <td>
+                  <h3 className="text-danger text-center mt-3">
+                    No se encuentra el producto
+                  </h3>
+                </td>
+              </tr>
+            ) : (
+              productsFiltered.map((product) => (
                 <Item
                   key={product.id}
                   {...product}
@@ -41,15 +51,18 @@ const ItemList = ({
                   handleDeleteAdmin={handleDeleteAdmin}
                 />
               ))
-            : products.map((product) => (
-                <Item
-                  key={product.id}
-                  {...product}
-                  onEdit={onEdit}
-                  product={product}
-                  handleDeleteAdmin={handleDeleteAdmin}
-                />
-              ))}
+            )
+          ) : (
+            products.map((product) => (
+              <Item
+                key={product.id}
+                {...product}
+                onEdit={onEdit}
+                product={product}
+                handleDeleteAdmin={handleDeleteAdmin}
+              />
+            ))
+          )}
         </tbody>
       </table>
     </section>

@@ -10,11 +10,12 @@ const ModalForm = ({
   desc,
   activeProduct,
 }) => {
+  //Si estamos editando le asignamos los valores del producto, si no, inician vacios
   const [imagenForm, setImagenForm] = useState("");
-  const [nombreForm, setNombreForm] = useState(nombre);
-  const [marcaForm, setMarcaForm] = useState(marca);
-  const [precioForm, setPrecioForm] = useState(precio);
-  const [descForm, setDescForm] = useState(desc);
+  const [nombreForm, setNombreForm] = useState(nombre ?? "");
+  const [marcaForm, setMarcaForm] = useState(marca ?? "");
+  const [precioForm, setPrecioForm] = useState(precio ?? "");
+  const [descForm, setDescForm] = useState(desc ?? "");
 
   const product = {
     nombre: nombreForm,
