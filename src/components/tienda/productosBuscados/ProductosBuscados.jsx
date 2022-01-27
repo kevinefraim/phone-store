@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { StoreContext } from "../../../context/StoreContext";
 import Cards from "../../layout/cards/Cards";
+import "./ProductosBuscados.css";
 
 const ProductosBuscados = () => {
   const [productsSearched, setProductsSearched] = useState([]);
@@ -29,8 +30,8 @@ const ProductosBuscados = () => {
 
   return (
     <main className="container">
-      <div className="mt-5">
-        <h2 className="text-center">Resultados de búsqueda</h2>
+      <div className="mt-5 busqueda-title">
+        <h2>Resultados de búsqueda</h2>
       </div>
       <section className="container prod-container row">
         {productsSearched.map((product) => (

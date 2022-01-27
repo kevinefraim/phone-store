@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import LoginForm from "../../layout/loginForm/LoginForm";
 
@@ -49,18 +49,23 @@ const AdminLogin = () => {
   };
 
   return (
-    <main
-      className="d-flex justify-content-center align-items-center"
-      style={{ height: "100vh" }}
-    >
-      <LoginForm
-        error={error}
-        usuario={usuario}
-        pass={pass}
-        handleLog={handleLog}
-        setUsuario={setUsuario}
-        setPass={setPass}
-      />
+    <main>
+      <Link to="/">
+        <button className="btn btn-primary mt-5 ms-5">Ir a inicio</button>
+      </Link>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <LoginForm
+          error={error}
+          usuario={usuario}
+          pass={pass}
+          handleLog={handleLog}
+          setUsuario={setUsuario}
+          setPass={setPass}
+        />
+      </div>
     </main>
   );
 };
