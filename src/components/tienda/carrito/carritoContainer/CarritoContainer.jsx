@@ -48,10 +48,10 @@ const CarritoContainer = () => {
       .sendForm("gmail", "compra", form.current, "user_piv4O1t75gRunvQxYZAjJ")
       .then(
         (result) => {
-          console.log(result.text);
+          // console.log(result.text);
         },
         (error) => {
-          console.log(error.text);
+          // console.log(error.text);
         }
       );
   };
