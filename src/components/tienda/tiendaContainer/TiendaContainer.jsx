@@ -18,7 +18,7 @@ const TiendaContainer = () => {
   return (
     <section className="container-fluid mx-0 px-0 row tienda-container">
       <Filtros />
-      <div className="col-md-9 container-fluid prod-container row">
+      <div className="col-md-9 container-fluid row mt-5 prod-container">
         {prodFiltered.length > 0
           ? prodFiltered.map((product) => (
               <div key={product.id} className="col-lg-4 col-md-6">

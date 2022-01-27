@@ -48,8 +48,8 @@ const Registro = () => {
       return setError("El email o el usuario ya estan registrados");
     }
     handleAddUsers(user);
-    setError("");
     formReset();
+    setError("");
     navigate("/login");
   };
 

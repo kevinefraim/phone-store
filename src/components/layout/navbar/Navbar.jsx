@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <header>
+    <header style={{ flexShrink: 0 }}>
       <nav className="nav-container">
         <div className="left-container">
           <div className="title-logo">
@@ -44,14 +44,37 @@ const Navbar = () => {
           <Buscador />
           {activeUser ? (
             <div className="d-flex align-items-center">
-              <p className="m-0">Hola {activeUser.nombre}!</p>
-              <div className="btn-logout">
-                <button
-                  onClick={onLogout}
-                  className="ms-2 btn btn-outline-danger"
+              <div className="dropdown">
+                <a
+                  className="nombre dropdown-toggle"
+                  href="/"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
-                  Salir
-                </button>
+                  Hola {activeUser.nombre}!
+                </a>
+
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuLink"
+                >
+                  <li>
+                    <Link className="dropdown-item compras-link" to="/compras">
+                      Mis compras
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      onClick={onLogout}
+                      className="dropdown-item text-danger"
+                      to="/compras"
+                    >
+                      Cerrar sesión
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           ) : (

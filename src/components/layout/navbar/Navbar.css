@@ -54,6 +54,24 @@
   color: #fff;
 }
 
+.nombre {
+  color: var(--blue);
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nombre:hover {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.compras-link {
+  color: var(--blue) !important;
+  font-weight: 600 !important;
+}
+
 /* responsive mobile */
 @media (max-width: 680px) {
   .nav-container {

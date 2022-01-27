@@ -1,7 +1,4 @@
-.footer-container {
-  background-color: #eee;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  align-items: center;
+.footer {
+  flex-shrink: 0;
+  background-color: #cacfd3;
 }

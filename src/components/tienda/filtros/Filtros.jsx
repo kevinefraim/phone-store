@@ -12,7 +12,7 @@ const Filtros = () => {
   }, [pathname]);
 
   return (
-    <div className="col-md-3  mt-4 filter-container">
+    <div className="col-md-3  mt-5 filter-container">
       <div className="filter-title">
         <p className="text-center">Filtros</p>
       </div>

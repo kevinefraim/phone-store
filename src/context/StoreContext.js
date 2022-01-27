@@ -10,6 +10,7 @@ const StoreProvider = ({ children }) => {
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito")) ?? []
   ); //estado de carrito con LS
+  const [compras, setCompras] = useState(JSON.parse(localStorage.getItem("compras")) ?? []);
 
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(products));
@@ -19,6 +20,10 @@ const StoreProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }, [carrito]);
+
+  useEffect(() => {
+    localStorage.setItem("compras", JSON.stringify(compras));
+  }, [compras]);
 
   //funcion para agregar al carrito/producto y cantidad como parametros
   const handleAdd = (product, qtySetted) => {
@@ -72,8 +77,14 @@ const StoreProvider = ({ children }) => {
     setCarrito([]);
   };
 
-  //Funciones de admin
 
+  //Mis compras
+  const handleCompra = (compra) => {
+    setCompras([...compras, compra])
+  }
+
+
+  //Funciones de admin
   const handleAddAdmin = (newProduct) => {
     setProducts([newProduct, ...products]);
   };
@@ -97,6 +108,7 @@ const StoreProvider = ({ children }) => {
       value={{
         products,
         carrito,
+        compras,
         setProducts,
         setCarrito,
         handleAdd,
@@ -104,6 +116,7 @@ const StoreProvider = ({ children }) => {
         handleSub,
         handleDelete,
         handleClear,
+        handleCompra,
         handleAddAdmin,
         handleEdit,
         handleDeleteAdmin,

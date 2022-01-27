@@ -1,4 +1,5 @@
 import samsung from "../../../assets/img/slider/phones.png";
+
 import "./Slider.css";
 
 const Slider = () => {

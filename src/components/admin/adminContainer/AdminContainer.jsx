@@ -76,10 +76,13 @@ const AdminContainer = () => {
     <main>
       <div className="d-flex flex-wrap justify-content-evenly p-3">
         <h1>Panel de administración</h1>
-        <button onClick={onAdd} className="btn btn-success">
+        <button onClick={onAdd} className="btn btn-outline-success fw-bolder">
           Agregar producto
         </button>
-        <button onClick={handleLogoutAdmin} className="btn btn-danger">
+        <button
+          onClick={handleLogoutAdmin}
+          className="btn btn-outline-danger fw-bolder"
+        >
           Salir
         </button>
       </div>
