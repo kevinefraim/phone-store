@@ -44,8 +44,8 @@ const LogIn = () => {
     }
 
     handleActiveUser(existUser);
-    setError("");
     formReset();
+    setError("");
     navigate("/");
   };
 

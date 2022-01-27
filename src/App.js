@@ -11,6 +11,7 @@ import ProductDetail from "./components/tienda/productDetail/ProductDetail";
 import ProductosBuscados from "./components/tienda/productosBuscados/ProductosBuscados";
 import Contacto from "./pages/contacto/Contacto";
 import Carrito from "./components/tienda/carrito/carritoContainer/CarritoContainer";
+import MisCompras from "./pages/misCompras/MisCompras";
 import LogIn from "./components/auth/login/Login";
 import Registro from "./components/auth/registro/Registro";
 import Admin from "./pages/admin/Admin";
@@ -26,27 +27,28 @@ const App = () => {
     <AuthProvider>
       <StoreProvider>
         {exclusion.indexOf(location.pathname) < 0 && <Navbar />}
-        <Routes>
-          <Route element={<PrivateRouteAdmin />}>
-            <Route path="/admin" element={<Admin />} />
-          </Route>
-          <Route element={<PrivateRouteLoginAdmin />}>
-            <Route path="/admin/login" element={<AdminLogin />} />
-          </Route>
-          <Route path="/" element={<Home />} />
-          <Route path="/tienda" element={<Tienda />} />
-          <Route path="/tienda/category/:cat" element={<Tienda />} />
-          <Route path="/tienda/:id" element={<ProductDetail />} />
-          <Route path="/search" element={<ProductosBuscados />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route element={<PrivateRouteUser />}>
-            <Route path="/login" element={<LogIn />} />
-          </Route>
-          <Route element={<PrivateRouteUser />}>
-            <Route path="/registro" element={<Registro />} />
-          </Route>
-          <Route path="/carrito" element={<Carrito />} />
-        </Routes>
+        <div className="container-fluid main-content">
+          <Routes>
+            <Route element={<PrivateRouteAdmin />}>
+              <Route path="/admin" element={<Admin />} />
+            </Route>
+            <Route element={<PrivateRouteLoginAdmin />}>
+              <Route path="/admin/login" element={<AdminLogin />} />
+            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/tienda" element={<Tienda />} />
+            <Route path="/tienda/category/:cat" element={<Tienda />} />
+            <Route path="/tienda/:id" element={<ProductDetail />} />
+            <Route path="/search" element={<ProductosBuscados />} />
+            <Route path="/contacto" element={<Contacto />} />
+            <Route element={<PrivateRouteUser />}>
+              <Route path="/login" element={<LogIn />} />
+              <Route path="/registro" element={<Registro />} />
+            </Route>      
+            <Route path="/carrito" element={<Carrito />} />
+            <Route path="/compras" element={<MisCompras />} />
+          </Routes>
+        </div>
         {exclusion.indexOf(location.pathname) < 0 && <Footer />}
       </StoreProvider>
     </AuthProvider>

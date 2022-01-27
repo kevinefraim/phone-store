@@ -1,10 +1,10 @@
 import { useContext, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../context/AuthContext";
 import { StoreContext } from "../../../../context/StoreContext";
 import CarritoTable from "../carritoTable/CarritoTable";
-import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
 
 import "./CarritoContainer.css";
 
@@ -33,7 +33,9 @@ const CarritoContainer = () => {
     handleSub,
     handleDelete,
     handleClear,
+    handleCompra,
   } = useContext(StoreContext);
+  const navigate = useNavigate();
 
   const carTotal = carrito.reduce(
     (price, car) => price + car.precio * car.qty,
@@ -56,9 +58,17 @@ const CarritoContainer = () => {
 
   //submit compra
   const submitCompra = () => {
-    setCarrito([]);
     sendEmail();
-    addAlert("Compra confirmada!");
+    const nuevaCompra = {
+      id: new Date().getTime(),
+      usuario: activeUser.usuario,
+      detalle: carrito,
+      total: carTotal,
+    };
+    handleCompra(nuevaCompra);
+    navigate("/");
+    addAlert("Gracias por realizar la compra");
+    setCarrito([]);
   };
 
   return (
@@ -96,12 +106,12 @@ const CarritoContainer = () => {
               ))}
             </tbody>
           </table>
-          <div className="container d-flex flex-wrap justify-content-evenly align-items-center mt-5">
+          <div className="d-flex flex-wrap justify-content-evenly align-items-center mt-5">
+            <h5 className="fw-bolder">Total: ${carTotal}</h5>
             <button onClick={handleClear} className="btn btn-danger">
               Vaciar carrito
             </button>
-            <h5 className="fw-bolder m-3">Total: ${carTotal}</h5>
-            <button onClick={submitCompra} className="btn btn-primary">
+            <button onClick={submitCompra} className="btn btn-primary mt-3">
               Confirmar compra
             </button>
           </div>

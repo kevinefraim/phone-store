@@ -29,9 +29,9 @@ const ContactoForm = () => {
       return;
     }
 
-    setMsg("Tu mensaje ha sido enviado!");
-    setError("");
     formReset();
+    setError("");
+    setMsg("Tu mensaje ha sido enviado!");
     setTimeout(() => {
       setMsg("");
     }, 2000);

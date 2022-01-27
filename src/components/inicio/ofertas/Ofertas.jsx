@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { StoreContext } from "../../../context/StoreContext";
 import { ofertas } from "../../../data/data";
 import Cards from "../../layout/cards/Cards";
 

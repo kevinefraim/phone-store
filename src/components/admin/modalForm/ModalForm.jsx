@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import "./ModalForm";
 
 const ModalForm = ({
@@ -7,35 +8,34 @@ const ModalForm = ({
   marca,
   precio,
   desc,
-  stock,
   activeProduct,
 }) => {
-  const [imagen, setImagen] = useState("");
-  const [nombreEdit, setNombre] = useState(nombre);
-  const [marcaEdit, setMarca] = useState(marca);
-  const [precioEdit, setPrecio] = useState(precio);
-  const [descEdit, setDesc] = useState(desc);
+  const [imagenForm, setImagenForm] = useState("");
+  const [nombreForm, setNombreForm] = useState(nombre);
+  const [marcaForm, setMarcaForm] = useState(marca);
+  const [precioForm, setPrecioForm] = useState(precio);
+  const [descForm, setDescForm] = useState(desc);
 
   const product = {
-    nombre: nombreEdit,
-    marca: marcaEdit,
-    precio: precioEdit,
-    desc: descEdit,
+    nombre: nombreForm,
+    marca: marcaForm,
+    precio: precioForm,
+    desc: descForm,
   };
 
   return (
     <div className="form-container">
       <h2>{activeProduct ? "Editar producto" : "Agregar producto"}</h2>
       <form
-        onSubmit={(e) => handleSubmit(e, product, imagen)}
+        onSubmit={(e) => handleSubmit(e, product, imagenForm)}
         className="form-modal"
       >
         {!activeProduct && (
           <div className="form-item">
             <label htmlFor="img">Imágen</label>
             <input
-              value={imagen}
-              onChange={({ target }) => setImagen(target.value)}
+              value={imagenForm}
+              onChange={({ target }) => setImagenForm(target.value)}
               type="text"
               placeholder="Ingrese nombre de imágen"
             />
@@ -44,8 +44,8 @@ const ModalForm = ({
         <div className="form-item">
           <label htmlFor="name">Nombre</label>
           <input
-            value={nombreEdit}
-            onChange={({ target }) => setNombre(target.value)}
+            value={nombreForm}
+            onChange={({ target }) => setNombreForm(target.value)}
             type="text"
             placeholder="Ingrese el nombre"
           />
@@ -53,8 +53,8 @@ const ModalForm = ({
         <div className="form-item">
           <label htmlFor="marca">Marca</label>
           <input
-            value={marcaEdit}
-            onChange={({ target }) => setMarca(target.value)}
+            value={marcaForm}
+            onChange={({ target }) => setMarcaForm(target.value)}
             type="text"
             placeholder="Ingrese la marca"
           />
@@ -62,8 +62,8 @@ const ModalForm = ({
         <div className="form-item">
           <label htmlFor="precio">Precio</label>
           <input
-            value={precioEdit}
-            onChange={({ target }) => setPrecio(target.value)}
+            value={precioForm}
+            onChange={({ target }) => setPrecioForm(target.value)}
             type="number"
             min={0}
             placeholder="Ingrese el precio"
@@ -72,8 +72,8 @@ const ModalForm = ({
         <div className="form-item">
           <label htmlFor="desc">Descripción</label>
           <input
-            value={descEdit}
-            onChange={({ target }) => setDesc(target.value)}
+            value={descForm}
+            onChange={({ target }) => setDescForm(target.value)}
             type="text"
             placeholder="Ingrese la descripción"
           />
