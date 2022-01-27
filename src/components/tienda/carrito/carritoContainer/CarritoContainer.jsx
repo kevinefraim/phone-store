@@ -1,11 +1,12 @@
 import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext";
-import { StoreContext } from "../../../context/StoreContext";
+import { AuthContext } from "../../../../context/AuthContext";
+import { StoreContext } from "../../../../context/StoreContext";
+import CarritoTable from "../carritoTable/CarritoTable";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 
-import "./Carrito.css";
+import "./CarritoContainer.css";
 
 //alerta
 const addAlert = (mensaje) => {
@@ -22,7 +23,7 @@ const addAlert = (mensaje) => {
   });
 };
 
-const Carrito = () => {
+const CarritoContainer = () => {
   const form = useRef();
   const { activeUser } = useContext(AuthContext);
   const {
@@ -84,44 +85,14 @@ const Carrito = () => {
             </thead>
             <tbody className="prod-container">
               {carrito.map((car) => (
-                <tr className="prod-cart" key={car.id}>
-                  <td>
-                    <img
-                      width={50}
-                      src={`${process.env.PUBLIC_URL}/assets/productos/${car.img}.png`}
-                      alt={car.nombre}
-                      className="prod-img"
-                    />
-                  </td>
-                  <td className="carrito-nombre w-25">
-                    <p>{car.nombre}</p>
-                  </td>
-                  <td className="fw-bolder">${car.precio}</td>
-                  <td>
-                    <div className="d-flex modify-cart">
-                      <button
-                        onClick={() => handleAddQty(car)}
-                        className="btn btn-primary"
-                      >
-                        +
-                      </button>
-                      <span className="mx-2">{car.qty}</span>
-                      <button
-                        onClick={() => handleSub(car)}
-                        className="btn btn-primary"
-                      >
-                        -
-                      </button>
-                    </div>
-                  </td>
-                  <td className="fw-bolder">${car.precio * car.qty}</td>
-                  <td>
-                    <i
-                      onClick={() => handleDelete(car.id)}
-                      className="bi bi-trash-fill"
-                    ></i>
-                  </td>
-                </tr>
+                <CarritoTable
+                  key={car.id}
+                  {...car}
+                  car={car}
+                  handleAddQty={handleAddQty}
+                  handleDelete={handleDelete}
+                  handleSub={handleSub}
+                />
               ))}
             </tbody>
           </table>
@@ -137,12 +108,12 @@ const Carrito = () => {
         </div>
       )}
       <form ref={form} className="d-none">
-        <input type="text" name="total" value={`$${carTotal}`} />
-        <input type="text" name="to_name" value={activeUser.nombre} />
-        <input type="text" name="to_email" value={activeUser.email} />
+        <input type="text" name="total" defaultValue={`$${carTotal}`} />
+        <input type="text" name="to_name" defaultValue={activeUser?.nombre} />
+        <input type="text" name="to_email" defaultValue={activeUser?.email} />
       </form>
     </main>
   );
 };
 
-export default Carrito;
+export default CarritoContainer;

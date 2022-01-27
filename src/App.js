@@ -10,7 +10,7 @@ import Tienda from "./pages/tienda/Tienda";
 import ProductDetail from "./components/tienda/productDetail/ProductDetail";
 import ProductosBuscados from "./components/tienda/productosBuscados/ProductosBuscados";
 import Contacto from "./pages/contacto/Contacto";
-import Carrito from "./components/tienda/carrito/Carrito";
+import Carrito from "./components/tienda/carrito/carritoContainer/CarritoContainer";
 import LogIn from "./components/auth/login/Login";
 import Registro from "./components/auth/registro/Registro";
 import Admin from "./pages/admin/Admin";
