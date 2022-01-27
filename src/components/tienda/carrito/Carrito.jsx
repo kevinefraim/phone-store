@@ -1,10 +1,15 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../../context/StoreContext";
-
+import { AuthContext } from "../../../context/AuthContext";
 import "./Carrito.css";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 const Carrito = () => {
+  const form = useRef();
+  const { activeUser } = useContext(AuthContext);
   const {
     carrito,
     setCarrito,
@@ -19,10 +24,39 @@ const Carrito = () => {
     0
   );
 
+  //alerta
+  const addAlert = (mensaje) => {
+    Swal.fire({
+      title: mensaje,
+      background: "#fff",
+      padding: "2rem",
+      position: "center",
+      showConfirmButton: false,
+      timer: 900,
+      customClass: {
+        title: "alert-title",
+      },
+    });
+  };
+  //funcion send email
+  const sendEmail = () => {
+    emailjs
+      .sendForm("gmail", "compra", form.current, "user_piv4O1t75gRunvQxYZAjJ")
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   //submit compra
   const submitCompra = () => {
-    alert("compra realizada");
     setCarrito([]);
+    sendEmail();
+    addAlert("Compra confirmada!");
   };
 
   return (
@@ -101,6 +135,11 @@ const Carrito = () => {
           </div>
         </div>
       )}
+      <form ref={form} className="d-none">
+        <input type="text" name="total" value={`$${carTotal}`} />
+        <input type="text" name="to_name" value={activeUser.nombre} />
+        <input type="text" name="to_email" value={activeUser.email} />
+      </form>
     </main>
   );
 };
