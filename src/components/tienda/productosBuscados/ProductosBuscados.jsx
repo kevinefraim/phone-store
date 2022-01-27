@@ -33,7 +33,7 @@ const ProductosBuscados = () => {
       <div className="mt-5 busqueda-title">
         <h2>Resultados de búsqueda</h2>
       </div>
-      <section className="container prod-container row">
+      <section className=" p-0 m-0 container prod-container row">
         {productsSearched.map((product) => (
           <div key={product.id} className="col-lg-4 col-md-6 col-sm-12">
             <Cards {...product} />

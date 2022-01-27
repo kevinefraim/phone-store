@@ -38,3 +38,9 @@
 .form-btn button {
   width: 25%;
 }
+
+@media (max-width: 530px) {
+  .form-contacto {
+    width: 90%;
+  }
+}

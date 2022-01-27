@@ -9,10 +9,15 @@
   transition: transform 0.3s ease;
   height: 340px;
 }
+.product-img {
+  width: 100%;
+  height: 70%;
+}
 .oferta-card:hover {
   transform: scale(1.03);
   background-color: var(--blue);
   color: #fff;
+  overflow: hidden;
 }
 
 .oferta-card img {

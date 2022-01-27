@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { StoreContext } from "../../../context/StoreContext";
 import Cards from "../../layout/cards/Cards";
 import Filtros from "../filtros/Filtros";
+import TiendaResponsive from "../tiendaResponsive/TiendaResponsive";
 
 import "./TiendaContainer.css";
 
@@ -18,7 +19,7 @@ const TiendaContainer = () => {
   return (
     <section className="container-fluid mx-0 px-0 row tienda-container">
       <Filtros />
-      <div className="col-md-9 container-fluid prod-container row">
+      <div className="col-md-9  container-fluid  row  prod-container">
         {prodFiltered.length > 0
           ? prodFiltered.map((product) => (
               <div key={product.id} className="col-lg-4 col-md-6">
@@ -26,11 +27,15 @@ const TiendaContainer = () => {
               </div>
             ))
           : products.map((product) => (
-              <div key={product.id} className="col-lg-4 col-md-6 col-sm-12">
+              <div
+                key={product.id}
+                className="col-lg-4 col-md-6 card-responsive p-0 "
+              >
                 <Cards {...product} />
               </div>
             ))}
       </div>
+      <TiendaResponsive />
     </section>
   );
 };
