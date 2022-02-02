@@ -9,9 +9,6 @@ const AuthProvider = ({ children }) => {
   const [activeUser, setActiveUser] = useState(
     JSON.parse(localStorage.getItem("activeUser")) ?? null
   ); //estado de usuario activo con LS
-  const [adminUser, setAdminUser] = useState(
-    JSON.parse(localStorage.getItem("adminUser")) ?? null
-  );
 
   //seteando item users con LS
   useEffect(() => {
@@ -22,10 +19,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("activeUser", JSON.stringify(activeUser));
   }, [activeUser]);
-
-  useEffect(() => {
-    localStorage.setItem("adminUser", JSON.stringify(adminUser));
-  }, [adminUser]);
 
   //funcion para agregar usuario registrado al estado users
   const handleAddUsers = (user) => {
@@ -42,25 +35,14 @@ const AuthProvider = ({ children }) => {
     setActiveUser(null);
   };
 
-  const handleAdminUser = (user) => {
-    setAdminUser(user);
-  };
-
-  const handleLogoutAdmin = (user) => {
-    setAdminUser(null);
-  };
-
   return (
     <AuthContext.Provider
       value={{
         users,
         activeUser,
-        adminUser,
         handleAddUsers,
         handleActiveUser,
         handleLogout,
-        handleAdminUser,
-        handleLogoutAdmin,
       }}
     >
       {children}

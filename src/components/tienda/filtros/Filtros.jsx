@@ -23,51 +23,51 @@ const Filtros = () => {
               Todos los productos
             </li>
           </Link>
-          <Link to="/tienda/category/Apple">
+          <Link to="/tienda/category/apple">
             <li
               className={
-                isActive === "/tienda/category/Apple" ? "active" : null
+                isActive === "/tienda/category/apple" ? "active" : null
               }
             >
               Apple
             </li>
           </Link>
-          <Link to="/tienda/category/Samsung">
+          <Link to="/tienda/category/samsung">
             <li
               className={
-                isActive === "/tienda/category/Samsung" ? "active" : null
+                isActive === "/tienda/category/samsung" ? "active" : null
               }
             >
               Samsung
             </li>
           </Link>
-          <Link to="/tienda/category/Motorola">
+          <Link to="/tienda/category/motorola">
             <li
               className={
-                isActive === "/tienda/category/Motorola" ? "active" : null
+                isActive === "/tienda/category/motorola" ? "active" : null
               }
             >
               Motorola
             </li>
           </Link>
-          <Link to="/tienda/category/Sony">
+          <Link to="/tienda/category/sony">
             <li
-              className={isActive === "/tienda/category/Sony" ? "active" : null}
+              className={isActive === "/tienda/category/sony" ? "active" : null}
             >
               Sony
             </li>
           </Link>
-          <Link to="/tienda/category/TCL">
+          <Link to="/tienda/category/tcl">
             <li
-              className={isActive === "/tienda/category/TCL" ? "active" : null}
+              className={isActive === "/tienda/category/tcl" ? "active" : null}
             >
               TCL
             </li>
           </Link>
-          <Link to="/tienda/category/Google">
+          <Link to="/tienda/category/google">
             <li
               className={
-                isActive === "/tienda/category/Google" ? "active" : null
+                isActive === "/tienda/category/google" ? "active" : null
               }
             >
               Google

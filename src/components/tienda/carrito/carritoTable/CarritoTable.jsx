@@ -6,7 +6,7 @@ const CarritoTable = ({
   nombre,
   precio,
   qty,
-  id,
+  _id: id,
   handleAddQty,
   handleDelete,
   handleSub,
@@ -14,12 +14,7 @@ const CarritoTable = ({
   return (
     <tr className="prod-cart">
       <td>
-        <img
-          width={50}
-          src={`${process.env.PUBLIC_URL}/assets/productos/${img}.png`}
-          alt={nombre}
-          className="prod-img"
-        />
+        <img width={50} src={img} alt={nombre} className="prod-img" />
       </td>
       <td className="carrito-nombre w-25">
         <p>{nombre}</p>

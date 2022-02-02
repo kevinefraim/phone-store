@@ -1,21 +1,8 @@
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext";
-import { StoreContext } from "../../../context/StoreContext";
+import { Link } from "react-router-dom";
 
 import "./ResponsiveMenu.css";
 
 const ResponsiveMenu = () => {
-  const { activeUser, handleLogout } = useContext(AuthContext);
-  const { handleClear } = useContext(StoreContext);
-  const navigate = useNavigate();
-
-  //funcion logout
-  const onLogout = () => {
-    handleLogout();
-    handleClear();
-    navigate("/");
-  };
   return (
     <div className="nav-responsive">
       <div className="responsive-btn">

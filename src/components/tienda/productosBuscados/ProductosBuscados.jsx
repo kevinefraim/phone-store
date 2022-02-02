@@ -37,7 +37,7 @@ const ProductosBuscados = () => {
       </div>
       <section className=" p-0 m-0 container prod-container row">
         {productsSearched.map((product) => (
-          <div key={product.id} className="col-lg-4 col-md-6 col-sm-12">
+          <div key={product._id} className="col-lg-4 col-md-6 col-sm-12">
             <Cards {...product} />
           </div>
         ))}

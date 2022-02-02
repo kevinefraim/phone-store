@@ -1,6 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { PrivateRouteAdmin } from "./routes/PrivateRouteAdmin";
-import { PrivateRouteLoginAdmin } from "./routes/PrivateRouteLoginAdmin";
+import { Routes, Route } from "react-router-dom";
 import { PrivateRouteUser } from "./routes/PrivateRouteLogin";
 import AuthProvider from "./context/AuthContext";
 import StoreProvider from "./context/StoreContext";
@@ -14,27 +12,16 @@ import Carrito from "./components/tienda/carrito/carritoContainer/CarritoContain
 import MisCompras from "./pages/misCompras/MisCompras";
 import LogIn from "./components/auth/login/Login";
 import Registro from "./components/auth/registro/Registro";
-import Admin from "./pages/admin/Admin";
-import AdminLogin from "./components/admin/login/AdminLogin";
 import Footer from "./components/layout/footer/Footer";
 
 const App = () => {
-  const location = useLocation();
-
-  const exclusion = ["/admin", "/admin/login"];
 
   return (
     <AuthProvider>
       <StoreProvider>
-        {exclusion.indexOf(location.pathname) < 0 && <Navbar />}
+        <Navbar />
         <div className="container-fluid main-content">
           <Routes>
-            <Route element={<PrivateRouteAdmin />}>
-              <Route path="/admin" element={<Admin />} />
-            </Route>
-            <Route element={<PrivateRouteLoginAdmin />}>
-              <Route path="/admin/login" element={<AdminLogin />} />
-            </Route>
             <Route path="/" element={<Home />} />
             <Route path="/tienda" element={<Tienda />} />
             <Route path="/tienda/category/:cat" element={<Tienda />} />
@@ -49,7 +36,7 @@ const App = () => {
             <Route path="/compras" element={<MisCompras />} />
           </Routes>
         </div>
-        {exclusion.indexOf(location.pathname) < 0 && <Footer />}
+        <Footer />
       </StoreProvider>
     </AuthProvider>
   );

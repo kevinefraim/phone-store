@@ -5,7 +5,7 @@ const CompraDetail = ({ id, detalle, total }) => {
       <td>
         <ul>
           {detalle.map((det) => (
-            <li className="d-flex" key={det.id}>
+            <li className="d-flex" key={det._id}>
               <h5 className="fw-bolder">- {det.nombre}:</h5>
               <p className="ms-2">x{det.qty}</p>
               <p className="ms-2">${det.precio}</p>

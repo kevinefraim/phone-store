@@ -12,7 +12,7 @@ const Ofertas = () => {
       <div className="container row card-container">
         {ofertas.map((oferta) => (
           <div
-            key={oferta.id}
+            key={oferta._id}
             className="col-lg-3 col-md-6 card-responsive p-0"
           >
             <Cards {...oferta} />

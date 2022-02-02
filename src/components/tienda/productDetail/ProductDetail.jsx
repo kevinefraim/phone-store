@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import { StoreContext } from "../../../context/StoreContext";
 import Swal from "sweetalert2";
+import useFetch from "../../../hooks/useFetch";
 
 import "./ProductDetail.css";
 
@@ -24,14 +25,17 @@ const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
-  const { products, handleAdd } = useContext(StoreContext);
+  const { handleAdd } = useContext(StoreContext);
   const { activeUser } = useContext(AuthContext);
   const { id } = useParams();
+  const { data } = useFetch(
+    `https://phone-storenyk.herokuapp.com/api/products/product/${id}`
+  );
   const [error, setError] = useState("");
 
   useEffect(() => {
-    setProduct(products.find((prod) => prod.id === id));
-  }, []);
+    setProduct(data.product);
+  }, [data.product]);
 
   //onChange quantity
   const handleChange = ({ target }) => {
@@ -63,15 +67,15 @@ const ProductDetail = () => {
         <img
           height={800}
           className="img-responsive"
-          src={`${process.env.PUBLIC_URL}/assets/productos/${product.img}.png`}
+          src={product?.img}
           style={{ objectFit: "contain" }}
-          alt={product.nombre}
+          alt={product?.nombre}
         />
         <div className="detalle-body">
-          <h1>{product.nombre}</h1>
-          <h5>{product.desc}</h5>
-          <p className="fw-bold">Precio: ${product.precio}</p>
-          <p className="fw-bold">Marca: {product.marca}</p>
+          <h1>{product?.nombre}</h1>
+          <h5>{product?.desc}</h5>
+          <p className="fw-bold">Precio: ${product?.precio}</p>
+          <p className="fw-bold">Marca: {product?.marca}</p>
           {added ? (
             <Link to="/carrito">
               <button className="btn btn-primary ">Continuar al carrito</button>

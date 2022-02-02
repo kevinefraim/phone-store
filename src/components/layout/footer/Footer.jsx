@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
@@ -9,9 +8,13 @@ const Footer = () => {
           <p>© Sitio realizado por Kevin Efraim y Nicolás Joaquín</p>
         </div>
         <div className="admin-btn">
-          <Link to="/admin">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://phoneadmin.vercel.app/"
+          >
             <button className="btn btn-secondary">Admin</button>
-          </Link>
+          </a>
         </div>
       </div>
     </footer>
