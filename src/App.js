@@ -15,7 +15,6 @@ import Registro from "./components/auth/registro/Registro";
 import Footer from "./components/layout/footer/Footer";
 
 const App = () => {
-
   return (
     <AuthProvider>
       <StoreProvider>
@@ -24,14 +23,14 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/tienda" element={<Tienda />} />
-            <Route path="/tienda/category/:cat" element={<Tienda />} />
+            <Route path="/tienda/brand/:brandId" element={<Tienda />} />
             <Route path="/tienda/:id" element={<ProductDetail />} />
             <Route path="/search" element={<ProductosBuscados />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route element={<PrivateRouteUser />}>
               <Route path="/login" element={<LogIn />} />
               <Route path="/registro" element={<Registro />} />
-            </Route>      
+            </Route>
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/compras" element={<MisCompras />} />
           </Routes>

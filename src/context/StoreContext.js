@@ -4,16 +4,18 @@ import useFetch from "../hooks/useFetch";
 export const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
-  const {data} = useFetch("https://phone-storenyk.herokuapp.com/api/products")
+  const { data } = useFetch("https://pure-plateau-58976.herokuapp.com/phones");
   const [products, setProducts] = useState([]); //estado de productos
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito")) ?? []
   ); //estado de carrito con LS
-  const [compras, setCompras] = useState(JSON.parse(localStorage.getItem("compras")) ?? []);
+  const [compras, setCompras] = useState(
+    JSON.parse(localStorage.getItem("compras")) ?? []
+  );
 
   useEffect(() => {
-    setProducts(data.products)
-  }, [data.products])
+    setProducts(data.phones);
+  }, [data.phones]);
 
   //seteando items de carrito en LS
   useEffect(() => {
@@ -76,11 +78,10 @@ const StoreProvider = ({ children }) => {
     setCarrito([]);
   };
 
-
   //Mis compras
   const handleCompra = (compra) => {
-    setCompras([...compras, compra])
-  }
+    setCompras([...compras, compra]);
+  };
 
   return (
     <StoreContext.Provider

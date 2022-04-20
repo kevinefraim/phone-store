@@ -10,14 +10,15 @@ import "./TiendaContainer.css";
 const TiendaContainer = () => {
   const { products } = useContext(StoreContext);
   const [prodFiltered, setProdFiltered] = useState([]);
-  const { cat } = useParams();
+  const { brandId } = useParams();
+  console.log(brandId);
   const { data } = useFetch(
-    `https://phone-storenyk.herokuapp.com/api/products/${cat}`
+    `https://pure-plateau-58976.herokuapp.com/brands/${brandId}`
   );
-
+  console.log(data);
   useEffect(() => {
-    setProdFiltered(data.products);
-  }, [data.products]);
+    setProdFiltered(data.phones);
+  }, [data.phones]);
 
   return (
     <section className="container-fluid mx-0 px-0 row tienda-container">

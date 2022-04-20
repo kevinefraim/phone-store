@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
 
 import "./Filtros.css";
 
 const Filtros = () => {
   const [isActive, setIsActive] = useState("");
   const { pathname } = useLocation();
-
+  const { data } = useFetch("https://pure-plateau-58976.herokuapp.com/brands");
+  const { brands } = data;
   useEffect(() => {
     setIsActive(pathname);
   }, [pathname]);
@@ -23,56 +25,17 @@ const Filtros = () => {
               Todos los productos
             </li>
           </Link>
-          <Link to="/tienda/category/apple">
-            <li
-              className={
-                isActive === "/tienda/category/apple" ? "active" : null
-              }
-            >
-              Apple
-            </li>
-          </Link>
-          <Link to="/tienda/category/samsung">
-            <li
-              className={
-                isActive === "/tienda/category/samsung" ? "active" : null
-              }
-            >
-              Samsung
-            </li>
-          </Link>
-          <Link to="/tienda/category/motorola">
-            <li
-              className={
-                isActive === "/tienda/category/motorola" ? "active" : null
-              }
-            >
-              Motorola
-            </li>
-          </Link>
-          <Link to="/tienda/category/sony">
-            <li
-              className={isActive === "/tienda/category/sony" ? "active" : null}
-            >
-              Sony
-            </li>
-          </Link>
-          <Link to="/tienda/category/tcl">
-            <li
-              className={isActive === "/tienda/category/tcl" ? "active" : null}
-            >
-              TCL
-            </li>
-          </Link>
-          <Link to="/tienda/category/google">
-            <li
-              className={
-                isActive === "/tienda/category/google" ? "active" : null
-              }
-            >
-              Google
-            </li>
-          </Link>
+          {brands?.map((brand) => (
+            <Link key={brand.id} to={`/tienda/brand/${brand.id}`}>
+              <li
+                className={
+                  isActive === `/tienda/brand/${brand.id}` ? "active" : null
+                }
+              >
+                {brand.name}
+              </li>
+            </Link>
+          ))}
         </ul>
       </div>
     </div>

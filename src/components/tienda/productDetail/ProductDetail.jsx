@@ -29,13 +29,17 @@ const ProductDetail = () => {
   const { activeUser } = useContext(AuthContext);
   const { id } = useParams();
   const { data } = useFetch(
-    `https://phone-storenyk.herokuapp.com/api/products/product/${id}`
+    `https://pure-plateau-58976.herokuapp.com/phones/${id}`
   );
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    setProduct(data.product);
-  }, [data.product]);
+  // useEffect(() => {
+  //   setProduct(data.phone);
+  //   console.log(data.phone);
+  // }, []);
+
+  const { phone } = data;
+  console.log(phone);
 
   //onChange quantity
   const handleChange = ({ target }) => {
@@ -67,15 +71,15 @@ const ProductDetail = () => {
         <img
           height={800}
           className="img-responsive"
-          src={product?.img}
+          src={phone?.img}
           style={{ objectFit: "contain" }}
-          alt={product?.nombre}
+          alt={phone?.name}
         />
         <div className="detalle-body">
-          <h1>{product?.nombre}</h1>
-          <h5>{product?.desc}</h5>
-          <p className="fw-bold">Precio: ${product?.precio}</p>
-          <p className="fw-bold">Marca: {product?.marca}</p>
+          <h1>{phone?.name}</h1>
+          <h5>{phone?.desc}</h5>
+          <p className="fw-bold">Precio: ${phone?.price}</p>
+          <p className="fw-bold">Marca: {phone?.brand.name}</p>
           {added ? (
             <Link to="/carrito">
               <button className="btn btn-primary ">Continuar al carrito</button>
