@@ -8,7 +8,7 @@ import ErrorForm from "../../assets/errorForm/ErrorForm";
 import "./Registro.css";
 
 const Registro = () => {
-  const { users, handleAddUsers, setToken } = useContext(AuthContext);
+  const { users, handleAddUsers } = useContext(AuthContext);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");

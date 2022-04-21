@@ -45,7 +45,6 @@ const AuthProvider = ({ children }) => {
         handleAddUsers,
         handleActiveUser,
         handleLogout,
-        setToken,
       }}
     >
       {children}
