@@ -7,7 +7,7 @@ import "./Filtros.css";
 const Filtros = () => {
   const [isActive, setIsActive] = useState("");
   const { pathname } = useLocation();
-  const { data } = useFetch("https://pure-plateau-58976.herokuapp.com/brands");
+  const { data } = useFetch("https://phonestore-back.herokuapp.com/brands");
   const { brands } = data;
   useEffect(() => {
     setIsActive(pathname);
@@ -26,10 +26,15 @@ const Filtros = () => {
             </li>
           </Link>
           {brands?.map((brand) => (
-            <Link key={brand.id} to={`/tienda/brand/${brand.id}`}>
+            <Link
+              key={brand.id}
+              to={`/tienda/brand/${brand.name.toLowerCase()}`}
+            >
               <li
                 className={
-                  isActive === `/tienda/brand/${brand.id}` ? "active" : null
+                  isActive === `/tienda/brand/${brand.name.toLowerCase()}`
+                    ? "active"
+                    : null
                 }
               >
                 {brand.name}

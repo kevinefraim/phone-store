@@ -10,15 +10,15 @@ import "./TiendaContainer.css";
 const TiendaContainer = () => {
   const { products } = useContext(StoreContext);
   const [prodFiltered, setProdFiltered] = useState([]);
-  const { brandId } = useParams();
-  console.log(brandId);
+  const { brand } = useParams();
+
   const { data } = useFetch(
-    `https://pure-plateau-58976.herokuapp.com/brands/${brandId}`
+    `https://phonestore-back.herokuapp.com/phones/brand/${brand}`
   );
-  console.log(data);
+
   useEffect(() => {
-    setProdFiltered(data.phones);
-  }, [data.phones]);
+    setProdFiltered(data.filteredPhones);
+  }, [data.filteredPhones]);
 
   return (
     <section className="container-fluid mx-0 px-0 row tienda-container">
@@ -27,7 +27,7 @@ const TiendaContainer = () => {
         {prodFiltered?.length > 0
           ? prodFiltered?.map((product) => (
               <div
-                key={product._id}
+                key={product.id}
                 className="col-lg-4 col-md-6 card-responsive p-0"
               >
                 <Cards {...product} />
@@ -35,7 +35,7 @@ const TiendaContainer = () => {
             ))
           : products?.map((product) => (
               <div
-                key={product._id}
+                key={product.id}
                 className="col-lg-4 col-md-6 card-responsive p-0 "
               >
                 <Cards {...product} />

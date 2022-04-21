@@ -29,7 +29,7 @@ const ProductDetail = () => {
   const { activeUser } = useContext(AuthContext);
   const { id } = useParams();
   const { data } = useFetch(
-    `https://pure-plateau-58976.herokuapp.com/phones/${id}`
+    `https://phonestore-back.herokuapp.com/phones/${id}`
   );
   const [error, setError] = useState("");
 
