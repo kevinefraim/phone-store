@@ -28,18 +28,9 @@ const ProductDetail = () => {
   const { handleAdd } = useContext(StoreContext);
   const { activeUser } = useContext(AuthContext);
   const { id } = useParams();
-  const { data } = useFetch(
-    `https://phonestore-back.herokuapp.com/phones/${id}`
-  );
+  const { data } = useFetch(`${process.env.REACT_APP_API_URL}/phones/${id}`);
   const [error, setError] = useState("");
-
-  // useEffect(() => {
-  //   setProduct(data.phone);
-  //   console.log(data.phone);
-  // }, []);
-
   const { phone } = data;
-  console.log(phone);
 
   //onChange quantity
   const handleChange = ({ target }) => {

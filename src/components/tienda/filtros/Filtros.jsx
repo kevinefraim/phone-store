@@ -7,7 +7,7 @@ import "./Filtros.css";
 const Filtros = () => {
   const [isActive, setIsActive] = useState("");
   const { pathname } = useLocation();
-  const { data } = useFetch("https://phonestore-back.herokuapp.com/brands");
+  const { data } = useFetch(`${process.env.REACT_APP_API_URL}/brands`);
   const { brands } = data;
   useEffect(() => {
     setIsActive(pathname);

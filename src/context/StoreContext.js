@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch";
 export const StoreContext = createContext();
 
 const StoreProvider = ({ children }) => {
-  const { data } = useFetch("https://phonestore-back.herokuapp.com/phones");
+  const { data } = useFetch(`${process.env.REACT_APP_API_URL}/phones`);
   const [products, setProducts] = useState([]); //estado de productos
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito")) ?? []

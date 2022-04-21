@@ -1,15 +1,17 @@
+import axios from "axios";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react/cjs/react.production.min";
 import { AuthContext } from "../../../context/AuthContext";
 import ErrorForm from "../../assets/errorForm/ErrorForm";
 
 import "./Registro.css";
 
 const Registro = () => {
-  const { users, handleAddUsers } = useContext(AuthContext);
+  const { users, handleAddUsers, setToken } = useContext(AuthContext);
   const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
-  const [usuario, setUsuario] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -17,40 +19,28 @@ const Registro = () => {
   const formReset = () => {
     setNombre("");
     setEmail("");
-    setUsuario("");
     setPass("");
+    setApellido("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if ([nombre, email, usuario, pass].includes("")) {
-      return setError("Hay campos vacios");
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/users/register`,
+        {
+          email,
+          name: nombre,
+          last_name: apellido,
+          password: pass,
+        }
+      );
+      console.log(res.data.token);
+    } catch (error) {
+      console.log(error);
     }
-    if (pass.length < 6) {
-      return setError("La contraseña debe tener al menos 6 caractéres");
-    }
-
-    const user = {
-      nombre,
-      email,
-      usuario,
-      pass,
-    };
-    OnAddUser(user);
-  };
-
-  const OnAddUser = (user) => {
-    const exist = users.find(
-      (us) => us.email === user.email || us.usuario === user.usuario
-    );
-    if (exist) {
-      return setError("El email o el usuario ya estan registrados");
-    }
-    handleAddUsers(user);
     formReset();
-    setError("");
-    navigate("/login");
+    // // navigate("/");
   };
 
   return (
@@ -64,13 +54,23 @@ const Registro = () => {
           {error !== "" && <ErrorForm error={error} />}
         </div>
         <div className="form-item">
-          <label htmlFor="fullName">Nombre</label>
+          <label htmlFor="name">Nombre</label>
           <input
             onChange={({ target }) => setNombre(target.value)}
             value={nombre}
             type="text"
-            name="fullName"
+            name="name"
             placeholder="Escriba su nombre"
+          />
+        </div>
+        <div className="form-item">
+          <label htmlFor="lastname">Apellido</label>
+          <input
+            onChange={({ target }) => setApellido(target.value)}
+            value={apellido}
+            type="text"
+            name="lastname"
+            placeholder="Escriba su Apellido"
           />
         </div>
         <div className="form-item">
@@ -81,16 +81,6 @@ const Registro = () => {
             type="email"
             name="mail"
             placeholder="Escriba su Email"
-          />
-        </div>
-        <div className="form-item">
-          <label htmlFor="fullName">Nombre de usuario</label>
-          <input
-            onChange={({ target }) => setUsuario(target.value)}
-            value={usuario}
-            type="text"
-            name="userName"
-            placeholder="Escriba su nombre de usuaro"
           />
         </div>
         <div className="form-item">

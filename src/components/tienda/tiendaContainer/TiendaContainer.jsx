@@ -13,7 +13,7 @@ const TiendaContainer = () => {
   const { brand } = useParams();
 
   const { data } = useFetch(
-    `https://phonestore-back.herokuapp.com/phones/brand/${brand}`
+    `${process.env.REACT_APP_API_URL}/phones/brand/${brand}`
   );
 
   useEffect(() => {

@@ -20,6 +20,8 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem("activeUser", JSON.stringify(activeUser));
   }, [activeUser]);
 
+  //seteando item users con LS
+
   //funcion para agregar usuario registrado al estado users
   const handleAddUsers = (user) => {
     setUsers([...users, user]);
@@ -43,6 +45,7 @@ const AuthProvider = ({ children }) => {
         handleAddUsers,
         handleActiveUser,
         handleLogout,
+        setToken,
       }}
     >
       {children}

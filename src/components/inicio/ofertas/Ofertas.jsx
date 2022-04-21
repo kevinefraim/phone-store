@@ -5,7 +5,7 @@ import Cards from "../../layout/cards/Cards";
 import "./Ofertas.css";
 
 const Ofertas = () => {
-  const { data } = useFetch("https://phonestore-back.herokuapp.com/phones");
+  const { data } = useFetch(`${process.env.REACT_APP_API_URL}/phones`);
   const ofertas = data.phones;
   console.log(ofertas);
 
