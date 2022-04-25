@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
@@ -6,48 +7,36 @@ import LoginForm from "../../layout/loginForm/LoginForm";
 import "./Login.css";
 
 const LogIn = () => {
-  const { users, handleActiveUser } = useContext(AuthContext);
-  const [usuario, setUsuario] = useState("");
+  const { handleActiveUser, activeUser } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  //reset form
-  const formReset = () => {
-    setUsuario("");
-    setPass("");
-  };
-
   //funcion de login
-  const handleLog = (e) => {
+  const handleLog = async (e) => {
     e.preventDefault();
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/users/login`,
+        {
+          email,
+          password: pass,
+        }
+      );
 
-    if ([usuario, pass].includes("")) {
-      return setError("Hay campos vacios");
+      if (data.ok === "false") setError(data.errors);
+      else {
+        navigate("/");
+      }
+      console.log(data);
+      handleActiveUser(data.loginUser, data.token);
+      // setToken(data.token);
+    } catch (errors) {
+      setError(errors);
     }
-
-    const user = {
-      usuario,
-      pass,
-    };
-
-    onActiveUser(user);
   };
-
-  const onActiveUser = (user) => {
-    const existUser = users.find(
-      (us) => us.usuario === user.usuario && us.pass === user.pass
-    );
-
-    if (!existUser) {
-      return setError("No existe un usuario con ese estos datos");
-    }
-
-    handleActiveUser(existUser);
-    formReset();
-    setError("");
-    navigate("/");
-  };
+  console.log(activeUser);
 
   return (
     <main
@@ -56,10 +45,10 @@ const LogIn = () => {
     >
       <LoginForm
         error={error}
-        usuario={usuario}
+        email={email}
         pass={pass}
         handleLog={handleLog}
-        setUsuario={setUsuario}
+        setEmail={setEmail}
         setPass={setPass}
       >
         <Link to="/registro">

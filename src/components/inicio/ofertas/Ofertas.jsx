@@ -7,7 +7,6 @@ import "./Ofertas.css";
 const Ofertas = () => {
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/phones`);
   const ofertas = data.phones;
-  console.log(ofertas);
 
   return (
     <div className="container">
