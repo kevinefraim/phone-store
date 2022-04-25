@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 
@@ -12,6 +13,7 @@ const StoreProvider = ({ children }) => {
   const [compras, setCompras] = useState(
     JSON.parse(localStorage.getItem("compras")) ?? []
   );
+  const [cartQty, setCartQty] = useState(0);
 
   useEffect(() => {
     setProducts(data.phones);
@@ -27,21 +29,20 @@ const StoreProvider = ({ children }) => {
   }, [compras]);
 
   //funcion para agregar al carrito/producto y cantidad como parametros
-  const handleAdd = (product, qtySetted) => {
-    //validacion para ver si existe el producto clickeado
-    const exist = carrito.find((car) => car._id === product._id);
+  const handleAdd = async (product) => {
+    // //validacion para ver si existe el producto clickeado
+    const exist = carrito.find((car) => car.id === product.id);
     //condicional que verifica si existe el producto agrega la cantidad seleccionada
     if (exist) {
       setCarrito(
-        carrito.map((car) =>
-          car._id === product._id ? { ...car, qty: car.qty + qtySetted } : car
-        )
+        carrito.map((car) => (car.id === product.id ? { ...car } : car))
       );
     }
-    //si no exite el prod se setea carrito con estos datos
+    // //si no exite el prod se setea carrito con estos datos
     else {
-      setCarrito([...carrito, { ...product, qty: qtySetted }]);
+      setCarrito([...carrito, { ...product }]);
     }
+    setCartQty(cartQty + 1);
   };
 
   //funcion para agregar cantidad con boton
@@ -52,18 +53,16 @@ const StoreProvider = ({ children }) => {
   //Funcion para restar cantidad con el boton
   const handleSub = (product) => {
     //validacion para ver si existe el prod en el carrito
-    const prodInCar = carrito.find((car) => car._id === product._id);
+    const prodInCar = carrito.find((car) => car.id === product.id);
 
     //condicional que verifica que si la cantidad = 1 elimina el producto
     if (prodInCar.qty === 1) {
-      handleDelete(product._id);
+      handleDelete(product.id);
     }
     //si no es = 1 resta 1 a la cantidad del producto
     else {
       setCarrito(
-        carrito.map((car) =>
-          car._id === product._id ? { ...car, qty: car.qty - 1 } : car
-        )
+        carrito.map((car) => (car.id === product.id ? { ...car } : car))
       );
     }
   };
@@ -97,6 +96,7 @@ const StoreProvider = ({ children }) => {
         handleDelete,
         handleClear,
         handleCompra,
+        cartQty,
       }}
     >
       {children}

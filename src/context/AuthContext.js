@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
   //funcion que setea activeuser con el parametro que pasamos
   const handleActiveUser = (user, token) => {
     setActiveUser(user);
-    localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("token", token);
   };
 
   //funcion que cierra sesion y setea activeuser como null

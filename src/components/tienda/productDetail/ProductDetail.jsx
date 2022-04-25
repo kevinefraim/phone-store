@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import useFetch from "../../../hooks/useFetch";
 
 import "./ProductDetail.css";
+import axios from "axios";
 
 const addAlert = () => {
   Swal.fire({
@@ -22,11 +23,10 @@ const addAlert = () => {
 };
 
 const ProductDetail = () => {
-  const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
-  const { handleAdd } = useContext(StoreContext);
   const { activeUser } = useContext(AuthContext);
+  const { handleAdd } = useContext(StoreContext);
   const { id } = useParams();
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/phones/${id}`);
   const [error, setError] = useState("");
@@ -38,13 +38,27 @@ const ProductDetail = () => {
     setQuantity(parseInt(qtyChange));
   };
 
-  const onAdd = () => {
+  const onAdd = async () => {
     if (activeUser === null)
       return setError("Inicia sesión para agregar al carrito");
-    handleAdd(product, quantity);
-    setAdded(true);
-    addAlert();
-    setError("");
+    const token = localStorage.getItem("token");
+
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/items/create`,
+        {
+          phone: phone?.id,
+          cart: 3,
+        },
+        {
+          headers: { "x-token": token },
+        }
+      );
+      handleAdd(data.newItem);
+      addAlert();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

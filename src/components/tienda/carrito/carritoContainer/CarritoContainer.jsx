@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 
 import "./CarritoContainer.css";
+import useFetch from "../../../../hooks/useFetch";
 
 //alerta
 const addAlert = (mensaje) => {
@@ -37,11 +38,6 @@ const CarritoContainer = () => {
   } = useContext(StoreContext);
   const navigate = useNavigate();
 
-  const carTotal = carrito.reduce(
-    (price, car) => price + car.precio * car.qty,
-    0
-  );
-
   //funcion send email
   const sendEmail = () => {
     emailjs
@@ -63,7 +59,7 @@ const CarritoContainer = () => {
       id: new Date().getTime(),
       usuario: activeUser.usuario,
       detalle: carrito,
-      total: carTotal,
+      total: 1,
     };
     handleCompra(nuevaCompra);
     navigate("/");
@@ -94,11 +90,11 @@ const CarritoContainer = () => {
               </tr>
             </thead>
             <tbody className="products-container">
-              {carrito.map((car) => (
+              {carrito.map((item) => (
                 <CarritoTable
-                  key={car._id}
-                  {...car}
-                  car={car}
+                  key={item.id}
+                  {...item}
+                  item={item}
                   handleAddQty={handleAddQty}
                   handleDelete={handleDelete}
                   handleSub={handleSub}
@@ -107,7 +103,7 @@ const CarritoContainer = () => {
             </tbody>
           </table>
           <div className="d-flex flex-wrap justify-content-evenly align-items-center mt-5">
-            <h5 className="fw-bolder">Total: ${carTotal}</h5>
+            <h5 className="fw-bolder">Total: ${1}</h5>
             <button onClick={handleClear} className="btn btn-danger">
               Vaciar carrito
             </button>
@@ -118,7 +114,7 @@ const CarritoContainer = () => {
         </div>
       )}
       <form ref={form} className="d-none">
-        <input type="text" name="total" defaultValue={`$${carTotal}`} />
+        <input type="text" name="total" defaultValue={`$${1}`} />
         <input type="text" name="to_name" defaultValue={activeUser?.nombre} />
         <input type="text" name="to_email" defaultValue={activeUser?.email} />
       </form>

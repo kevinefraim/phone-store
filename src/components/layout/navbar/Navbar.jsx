@@ -11,7 +11,8 @@ import "./Navbar.css";
 const Navbar = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
   const { carrito, handleClear } = useContext(StoreContext);
-  const totalItems = carrito.reduce((qty, car) => qty + car.qty, 0);
+  // const totalItems = carrito.reduce((qty, car) => qty + car.qty, 0);
+  const { cartQty } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const onLogout = () => {
@@ -82,7 +83,7 @@ const Navbar = () => {
           )}
           <Link to="/carrito" className="d-flex">
             <i className="bi bi-cart-fill"></i>
-            <span className="me-2">{totalItems}</span>
+            <span className="me-2">{cartQty}</span>
           </Link>
         </div>
       </nav>
