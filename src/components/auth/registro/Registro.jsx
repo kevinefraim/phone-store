@@ -13,7 +13,7 @@ const Registro = () => {
   const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const formReset = () => {
@@ -35,12 +35,14 @@ const Registro = () => {
           password: pass,
         }
       );
-      console.log(res.data.token);
-    } catch (error) {
-      console.log(error);
+      if (res.data.ok === "false") setError(res.data.errors);
+      else {
+        formReset();
+      }
+    } catch (errors) {
+      console.log(error.email);
     }
-    formReset();
-    // // navigate("/");
+    navigate("/");
   };
 
   return (
@@ -51,7 +53,6 @@ const Registro = () => {
       <form onSubmit={handleSubmit} className="form-registro">
         <div className="title d-flex flex-column">
           <h2 className="text-center">Registrarse</h2>
-          {error !== "" && <ErrorForm error={error} />}
         </div>
         <div className="form-item">
           <label htmlFor="name">Nombre</label>
@@ -62,6 +63,7 @@ const Registro = () => {
             name="name"
             placeholder="Escriba su nombre"
           />
+          {error?.name && <ErrorForm error={error?.name} />}
         </div>
         <div className="form-item">
           <label htmlFor="lastname">Apellido</label>
@@ -72,6 +74,7 @@ const Registro = () => {
             name="lastname"
             placeholder="Escriba su Apellido"
           />
+          {error?.last_name && <ErrorForm error={error?.last_name} />}
         </div>
         <div className="form-item">
           <label htmlFor="fullName">Email</label>
@@ -82,6 +85,7 @@ const Registro = () => {
             name="mail"
             placeholder="Escriba su Email"
           />
+          {error?.email && <ErrorForm error={error?.email} />}
         </div>
         <div className="form-item">
           <label htmlFor="fullName">Contraseña</label>
@@ -93,6 +97,7 @@ const Registro = () => {
             placeholder="Escriba su contraseña"
             min={0}
           />
+          {error?.password && <ErrorForm error={error?.password} />}
         </div>
         <Link to="/login">
           <p className="registro-btn">¿Ya tenés una cuenta? Iniciá sesión</p>
