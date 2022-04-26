@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem("token", token);
   };
 
+  //funcion para revalidar el usuario y setear activeUser nuevamente
   useEffect(() => {
     const revalidateUser = async () => {
       try {

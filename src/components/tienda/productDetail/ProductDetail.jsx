@@ -26,7 +26,6 @@ const ProductDetail = () => {
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
   const { activeUser } = useContext(AuthContext);
-  const { handleAdd } = useContext(StoreContext);
   const { id } = useParams();
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/phones/${id}`);
   const [error, setError] = useState("");
@@ -56,12 +55,13 @@ const ProductDetail = () => {
           headers: { "x-token": token },
         }
       );
-      handleAdd(data.newItem);
+      // handleAdd(data.newItem);
+      setAdded(true);
+      console.log(data.newItem);
 
       addAlert();
     } catch (error) {
-      console.log(error);
-      console.log("error");
+      setError(error.response);
     }
   };
 
@@ -90,7 +90,7 @@ const ProductDetail = () => {
           <p className="fw-bold">Precio: ${phone?.price}</p>
           <p className="fw-bold">Marca: {phone?.brand.name}</p>
           {added ? (
-            <Link to="/carrito">
+            <Link to="/carrito/3">
               <button className="btn btn-primary ">Continuar al carrito</button>
             </Link>
           ) : (
