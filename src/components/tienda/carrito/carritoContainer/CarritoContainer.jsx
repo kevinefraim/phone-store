@@ -1,5 +1,5 @@
-import { useContext, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useRef, useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../../../context/AuthContext";
 import { StoreContext } from "../../../../context/StoreContext";
 import CarritoTable from "../carritoTable/CarritoTable";
@@ -7,7 +7,8 @@ import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 
 import "./CarritoContainer.css";
-import useFetch from "../../../../hooks/useFetch";
+
+import axios from "axios";
 
 //alerta
 const addAlert = (mensaje) => {
@@ -27,6 +28,10 @@ const addAlert = (mensaje) => {
 const CarritoContainer = () => {
   const form = useRef();
   const { activeUser } = useContext(AuthContext);
+  const { cartId } = useParams();
+  const [cartItems, setCartItems] = useState(null);
+  const [cart, setCart] = useState(null);
+
   const {
     carrito,
     setCarrito,
@@ -51,6 +56,33 @@ const CarritoContainer = () => {
         }
       );
   };
+
+  const readUserItems = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/items/cart/${cartId}`,
+        {
+          headers: { "x-token": token },
+        }
+      );
+      setCartItems(data.filteredItems);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getCartTotal = async () => {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/cart/${cartId}`
+    );
+    setCart(data.cart[0]);
+  };
+
+  useEffect(() => {
+    readUserItems();
+    getCartTotal();
+  }, []);
 
   //submit compra
   const submitCompra = () => {
@@ -90,7 +122,7 @@ const CarritoContainer = () => {
               </tr>
             </thead>
             <tbody className="products-container">
-              {carrito.map((item) => (
+              {cartItems?.map((item) => (
                 <CarritoTable
                   key={item.id}
                   {...item}
@@ -103,7 +135,7 @@ const CarritoContainer = () => {
             </tbody>
           </table>
           <div className="d-flex flex-wrap justify-content-evenly align-items-center mt-5">
-            <h5 className="fw-bolder">Total: ${1}</h5>
+            <h5 className="fw-bolder">Total: ${cart?.total}</h5>
             <button onClick={handleClear} className="btn btn-danger">
               Vaciar carrito
             </button>
@@ -114,7 +146,7 @@ const CarritoContainer = () => {
         </div>
       )}
       <form ref={form} className="d-none">
-        <input type="text" name="total" defaultValue={`$${1}`} />
+        <input type="text" name="total" defaultValue={`$${cart?.total}`} />
         <input type="text" name="to_name" defaultValue={activeUser?.nombre} />
         <input type="text" name="to_email" defaultValue={activeUser?.email} />
       </form>

@@ -81,7 +81,7 @@ const Navbar = () => {
               <i className="bi bi-person-fill"></i>
             </Link>
           )}
-          <Link to="/carrito" className="d-flex">
+          <Link to="/carrito/3" className="d-flex">
             <i className="bi bi-cart-fill"></i>
             <span className="me-2">{cartQty}</span>
           </Link>

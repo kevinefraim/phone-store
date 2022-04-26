@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
@@ -6,9 +7,18 @@ import "./Filtros.css";
 
 const Filtros = () => {
   const [isActive, setIsActive] = useState("");
+  const [brands, setBrands] = useState(null);
   const { pathname } = useLocation();
-  const { data } = useFetch(`${process.env.REACT_APP_API_URL}/brands`);
-  const { brands } = data;
+
+  const getBrands = async () => {
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/brands`);
+    setBrands(data.brands);
+  };
+
+  useEffect(() => {
+    getBrands();
+  }, []);
+
   useEffect(() => {
     setIsActive(pathname);
   }, [pathname]);

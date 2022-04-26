@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StoreContext } from "../../../context/StoreContext";
@@ -12,13 +13,16 @@ const TiendaContainer = () => {
   const [prodFiltered, setProdFiltered] = useState([]);
   const { brand } = useParams();
 
-  const { data } = useFetch(
-    `${process.env.REACT_APP_API_URL}/phones/brand/${brand}`
-  );
+  const getFilteredPhones = async () => {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}/phones/brand/${brand}`
+    );
+    setProdFiltered(data.filteredPhones);
+  };
 
   useEffect(() => {
-    setProdFiltered(data.filteredPhones);
-  }, [data.filteredPhones]);
+    getFilteredPhones();
+  }, [brand]);
 
   return (
     <section className="container-fluid mx-0 px-0 row tienda-container">
