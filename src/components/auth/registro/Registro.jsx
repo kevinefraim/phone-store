@@ -19,7 +19,7 @@ const Registro = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
+      const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}/users/register`,
         {
           email,
@@ -28,15 +28,12 @@ const Registro = () => {
           password: pass,
         }
       );
-      if (res.data.ok === "false") setError(res.data.errors);
-      else {
-        navigate("/");
-      }
-    } catch (errors) {
-      console.log(errors);
+      if (data.ok) navigate("/");
+    } catch (error) {
+      setError(error.response.data);
     }
   };
-
+  console.log(error);
   return (
     <main
       className="d-flex justify-content-center align-items-center"
@@ -45,6 +42,9 @@ const Registro = () => {
       <form onSubmit={handleSubmit} className="form-registro">
         <div className="title d-flex flex-column">
           <h2 className="text-center">Registrarse</h2>
+          {error && typeof error.msg === "string" && (
+            <ErrorForm error={error.msg} />
+          )}
         </div>
         <div className="form-item">
           <label htmlFor="name">Nombre</label>
@@ -55,7 +55,7 @@ const Registro = () => {
             name="name"
             placeholder="Escriba su nombre"
           />
-          {error?.name && <ErrorForm error={error?.name} />}
+          {error?.msg?.name && <ErrorForm error={error?.msg.name[0]} />}
         </div>
         <div className="form-item">
           <label htmlFor="lastname">Apellido</label>
@@ -66,7 +66,9 @@ const Registro = () => {
             name="lastname"
             placeholder="Escriba su Apellido"
           />
-          {error?.last_name && <ErrorForm error={error?.last_name} />}
+          {error?.msg?.last_name && (
+            <ErrorForm error={error?.msg.last_name[0]} />
+          )}
         </div>
         <div className="form-item">
           <label htmlFor="fullName">Email</label>
@@ -77,7 +79,7 @@ const Registro = () => {
             name="mail"
             placeholder="Escriba su Email"
           />
-          {error?.email && <ErrorForm error={error?.email} />}
+          {error?.msg?.email && <ErrorForm error={error?.msg.email[0]} />}
         </div>
         <div className="form-item">
           <label htmlFor="fullName">Contraseña</label>
@@ -89,7 +91,7 @@ const Registro = () => {
             placeholder="Escriba su contraseña"
             min={0}
           />
-          {error?.password && <ErrorForm error={error?.password} />}
+          {error?.msg?.password && <ErrorForm error={error?.msg.password[0]} />}
         </div>
         <Link to="/login">
           <p className="registro-btn">¿Ya tenés una cuenta? Iniciá sesión</p>

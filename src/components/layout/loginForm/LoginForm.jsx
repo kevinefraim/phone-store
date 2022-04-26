@@ -9,11 +9,14 @@ const LoginForm = ({
   setEmail,
   setPass,
 }) => {
+  console.log(error);
   return (
     <form onSubmit={handleLog} className="form-login">
       <div className="title d-flex flex-column">
         <h2 className="text-center">Inicia Sesión</h2>
-        {error !== null && <ErrorForm error={error.response.data.error} />}
+        {error && typeof error.msg === "string" && (
+          <ErrorForm error={error.msg} />
+        )}
       </div>
       <div className="form-item">
         <label htmlFor="email">Email de Usuario</label>
@@ -24,7 +27,7 @@ const LoginForm = ({
           name="email"
           placeholder="Ingrese su email"
         />
-        {error?.email && <ErrorForm error={error?.email} />}
+        {error?.msg?.email && <ErrorForm error={error?.msg.email[0]} />}
       </div>
       <div className="form-item">
         <label htmlFor="password">Contraseña</label>
@@ -36,7 +39,7 @@ const LoginForm = ({
           placeholder="Ingrese su contraseña"
           min={0}
         />
-        {error?.password && <ErrorForm error={error?.password} />}
+        {error?.msg?.password && <ErrorForm error={error?.msg.password[0]} />}
       </div>
       {children}
       <div className="form-btn">

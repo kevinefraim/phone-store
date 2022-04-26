@@ -24,15 +24,11 @@ const LogIn = () => {
           password: pass,
         }
       );
-
-      if (data.ok === "false") setError(data.errors);
-      else {
-        navigate("/");
-      }
+      if (data.ok) navigate("/");
 
       handleActiveUser(data.loginUser, data.token);
-    } catch (errors) {
-      setError(errors);
+    } catch (error) {
+      setError(error.response.data);
     }
   };
 

@@ -23,7 +23,7 @@ const addAlert = () => {
 };
 
 const ProductDetail = () => {
-  const [quantity, setQuantity] = useState(1);
+  const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
   const { activeUser } = useContext(AuthContext);
   const { handleAdd } = useContext(StoreContext);
@@ -35,8 +35,9 @@ const ProductDetail = () => {
   //onChange quantity
   const handleChange = ({ target }) => {
     const qtyChange = target.value;
-    setQuantity(parseInt(qtyChange));
+    setQty(parseInt(qtyChange));
   };
+  console.log(qty);
 
   const onAdd = async () => {
     if (activeUser === null)
@@ -49,15 +50,18 @@ const ProductDetail = () => {
         {
           phone: phone?.id,
           cart: 3,
+          quantity: qty,
         },
         {
           headers: { "x-token": token },
         }
       );
       handleAdd(data.newItem);
+
       addAlert();
     } catch (error) {
       console.log(error);
+      console.log("error");
     }
   };
 
@@ -93,7 +97,7 @@ const ProductDetail = () => {
             <div className="btn-compra">
               <div className="qty-select">
                 <label htmlFor="qty">Cantidad:</label>
-                <select onChange={handleChange} value={quantity} name="qty">
+                <select onChange={handleChange} value={qty} name="qty">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>

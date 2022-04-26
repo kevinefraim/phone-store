@@ -116,7 +116,7 @@ const CarritoContainer = () => {
       console.log(error);
     }
   };
-
+  console.log(cartItems);
   //quitar cantidad
   const subQuantity = async (qty, itemId) => {
     try {
