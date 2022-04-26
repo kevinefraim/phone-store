@@ -13,7 +13,9 @@ const StoreProvider = ({ children }) => {
   const [compras, setCompras] = useState(
     JSON.parse(localStorage.getItem("compras")) ?? []
   );
-  const [cartQty, setCartQty] = useState(0);
+  const [cartQty, setCartQty] = useState(
+    JSON.parse(localStorage.getItem("cartQty")) ?? 0
+  );
 
   useEffect(() => {
     setProducts(data.phones);
@@ -23,6 +25,10 @@ const StoreProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }, [carrito]);
+
+  useEffect(() => {
+    localStorage.setItem("cartQty", JSON.stringify(cartQty));
+  }, [cartQty]);
 
   useEffect(() => {
     localStorage.setItem("compras", JSON.stringify(compras));
@@ -43,11 +49,6 @@ const StoreProvider = ({ children }) => {
       setCarrito([...carrito, { ...product }]);
     }
     setCartQty(cartQty + 1);
-  };
-
-  //funcion para agregar cantidad con boton
-  const handleAddQty = (product) => {
-    handleAdd(product, 1);
   };
 
   //Funcion para restar cantidad con el boton
@@ -91,12 +92,12 @@ const StoreProvider = ({ children }) => {
         setProducts,
         setCarrito,
         handleAdd,
-        handleAddQty,
         handleSub,
         handleDelete,
         handleClear,
         handleCompra,
         cartQty,
+        setCartQty,
       }}
     >
       {children}

@@ -10,15 +10,15 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
-  const { carrito, handleClear } = useContext(StoreContext);
-  // const totalItems = carrito.reduce((qty, car) => qty + car.qty, 0);
-  const { cartQty } = useContext(StoreContext);
+  const { handleClear, setCartQty, cartQty } = useContext(StoreContext);
+
   const navigate = useNavigate();
 
   const onLogout = () => {
     handleLogout();
     handleClear();
     navigate("/");
+    setCartQty(0);
   };
 
   return (

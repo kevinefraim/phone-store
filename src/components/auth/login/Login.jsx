@@ -29,14 +29,12 @@ const LogIn = () => {
       else {
         navigate("/");
       }
-      console.log(data);
+
       handleActiveUser(data.loginUser, data.token);
-      // setToken(data.token);
     } catch (errors) {
       setError(errors);
     }
   };
-  console.log(activeUser);
 
   return (
     <main

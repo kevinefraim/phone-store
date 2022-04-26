@@ -35,12 +35,13 @@ const CarritoContainer = () => {
   const {
     carrito,
     setCarrito,
-    handleAddQty,
+
     handleSub,
     handleDelete,
     handleClear,
     handleCompra,
   } = useContext(StoreContext);
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   //funcion send email
@@ -58,7 +59,6 @@ const CarritoContainer = () => {
   };
 
   const readUserItems = async () => {
-    const token = localStorage.getItem("token");
     try {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_URL}/items/cart/${cartId}`,
@@ -76,7 +76,7 @@ const CarritoContainer = () => {
     const { data } = await axios.get(
       `${process.env.REACT_APP_API_URL}/cart/${cartId}`
     );
-    setCart(data.cart[0]);
+    setCart(data?.cart[0]);
   };
 
   useEffect(() => {
@@ -99,12 +99,48 @@ const CarritoContainer = () => {
     setCarrito([]);
   };
 
+  //agregar cantidad
+  const addQuantity = async (qty, itemId) => {
+    try {
+      const res = await axios.put(
+        `${process.env.REACT_APP_API_URL}/items/update/${itemId}`,
+        {
+          quantity: qty + 1,
+        },
+        {
+          headers: { "x-token": token },
+        }
+      );
+      const { newItem } = res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //quitar cantidad
+  const subQuantity = async (qty, itemId) => {
+    try {
+      const res = await axios.put(
+        `${process.env.REACT_APP_API_URL}/items/update/${itemId}`,
+        {
+          quantity: qty - 1,
+        },
+        {
+          headers: { "x-token": token },
+        }
+      );
+      const { newItem } = res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <main className="container-fluid my-2 p-0">
       <div className="title-cart">
         <h2 className="mb-4">Carrito de compras</h2>
       </div>
-      {carrito.length === 0 ? (
+      {cartItems?.length === 0 ? (
         <h2 className="text-center mt-5">
           No hay productos, <Link to="/tienda">Agregalos en la tienda!</Link>
         </h2>
@@ -125,11 +161,12 @@ const CarritoContainer = () => {
               {cartItems?.map((item) => (
                 <CarritoTable
                   key={item.id}
+                  token={token}
                   {...item}
                   item={item}
-                  handleAddQty={handleAddQty}
+                  addQuantity={addQuantity}
                   handleDelete={handleDelete}
-                  handleSub={handleSub}
+                  subQuantity={subQuantity}
                 />
               ))}
             </tbody>

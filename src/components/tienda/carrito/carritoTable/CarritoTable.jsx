@@ -1,7 +1,24 @@
+import axios from "axios";
 import "../carritoContainer/CarritoContainer.css";
+import { useState } from "react";
+import { useEffect } from "react/cjs/react.production.min";
 
-const CarritoTable = ({ item, handleAddQty, handleDelete, handleSub }) => {
-  const { quantity, id, cart, phone } = item;
+const CarritoTable = ({
+  item,
+  addQuantity,
+  handleDelete,
+  subQuantity,
+  token,
+}) => {
+  const [updatedItem, setUpdatedItem] = useState(item);
+  const { phone, quantity, id } = updatedItem;
+
+  const handleAddQty = () => {
+    addQuantity(quantity, id);
+  };
+  const handleSubQty = () => {
+    subQuantity(quantity, id);
+  };
 
   return (
     <tr className="prod-cart">
@@ -15,20 +32,24 @@ const CarritoTable = ({ item, handleAddQty, handleDelete, handleSub }) => {
       <td>
         <div className="d-flex modify-cart">
           <button
-            onClick={() => handleAddQty(phone)}
+            // onClick={() => handleAddQty(phone)}
+            onClick={handleAddQty}
             className="btn btn-primary"
           >
             +
           </button>
-          <span className="mx-2">{quantity}</span>
-          <button onClick={() => handleSub(phone)} className="btn btn-primary">
+          <span className="mx-2">{updatedItem.quantity}</span>
+          <button onClick={handleSubQty} className="btn btn-primary">
             -
           </button>
         </div>
       </td>
-      <td className="fw-bolder">${phone?.price * quantity}</td>
+      <td className="fw-bolder">${phone?.price * updatedItem.quantity}</td>
       <td>
-        <i onClick={() => handleDelete(id)} className="bi bi-trash-fill"></i>
+        <i
+          // onClick={() => handleDelete(id)}
+          className="bi bi-trash-fill"
+        ></i>
       </td>
     </tr>
   );
