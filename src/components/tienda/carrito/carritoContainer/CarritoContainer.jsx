@@ -31,16 +31,7 @@ const CarritoContainer = () => {
   const { cartId } = useParams();
   const [cartItems, setCartItems] = useState(null);
   const [cart, setCart] = useState(null);
-
-  const {
-    carrito,
-    setCarrito,
-
-    handleSub,
-    handleDelete,
-    handleClear,
-    handleCompra,
-  } = useContext(StoreContext);
+  const { handleCompra } = useContext(StoreContext);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -91,13 +82,12 @@ const CarritoContainer = () => {
     const nuevaCompra = {
       id: new Date().getTime(),
       usuario: activeUser.usuario,
-      detalle: carrito,
+
       total: 1,
     };
     handleCompra(nuevaCompra);
     navigate("/");
     addAlert("Gracias por realizar la compra");
-    setCarrito([]);
   };
 
   //agregar cantidad
@@ -112,7 +102,6 @@ const CarritoContainer = () => {
           headers: { "x-token": token },
         }
       );
-      const { newItem } = res.data;
     } catch (error) {
       console.log(error);
     }
@@ -130,7 +119,21 @@ const CarritoContainer = () => {
           headers: { "x-token": token },
         }
       );
-      const { newItem } = res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //delete item
+  const onDelete = async (itemId) => {
+    try {
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/items/delete/${itemId}`,
+        {
+          headers: { "x-token": token },
+        }
+      );
+      setCartItems(cartItems.filter((item) => item.id === itemId));
     } catch (error) {
       console.log(error);
     }
@@ -162,21 +165,20 @@ const CarritoContainer = () => {
               {cartItems?.map((item) => (
                 <CarritoTable
                   key={item.id}
+                  cart={cart}
+                  setCart={setCart}
                   token={token}
-                  {...item}
                   item={item}
                   addQuantity={addQuantity}
-                  handleDelete={handleDelete}
                   subQuantity={subQuantity}
+                  onDelete={onDelete}
                 />
               ))}
             </tbody>
           </table>
           <div className="d-flex flex-wrap justify-content-evenly align-items-center mt-5">
             <h5 className="fw-bolder">Total: ${cart?.total}</h5>
-            <button onClick={handleClear} className="btn btn-danger">
-              Vaciar carrito
-            </button>
+            <button className="btn btn-danger">Vaciar carrito</button>
             <button onClick={submitCompra} className="btn btn-primary mt-3">
               Confirmar compra
             </button>

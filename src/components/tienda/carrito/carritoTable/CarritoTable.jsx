@@ -6,18 +6,32 @@ import { useEffect } from "react/cjs/react.production.min";
 const CarritoTable = ({
   item,
   addQuantity,
-  handleDelete,
   subQuantity,
-  token,
+  onDelete,
+  cart,
+  setCart,
 }) => {
   const [updatedItem, setUpdatedItem] = useState(item);
   const { phone, quantity, id } = updatedItem;
+  const { stock } = updatedItem.phone;
 
-  const handleAddQty = () => {
-    addQuantity(quantity, id);
+  const handleAddQty = async () => {
+    if (updatedItem.quantity >= 1 && updatedItem.quantity < stock) {
+      await addQuantity(quantity, id);
+      setUpdatedItem({ ...updatedItem, quantity: quantity + 1 });
+      setCart({ ...cart, total: cart.total + phone.price });
+    }
   };
-  const handleSubQty = () => {
-    subQuantity(quantity, id);
+  const handleSubQty = async () => {
+    if (updatedItem.quantity >= 2) {
+      await subQuantity(quantity, id);
+      setUpdatedItem({ ...updatedItem, quantity: quantity - 1 });
+      setCart({ ...cart, total: cart.total - phone.price });
+    }
+  };
+
+  const handleDelete = async () => {
+    await onDelete(id);
   };
 
   return (
@@ -46,10 +60,7 @@ const CarritoTable = ({
       </td>
       <td className="fw-bolder">${phone?.price * updatedItem.quantity}</td>
       <td>
-        <i
-          // onClick={() => handleDelete(id)}
-          className="bi bi-trash-fill"
-        ></i>
+        <i onClick={handleDelete} className="bi bi-trash-fill"></i>
       </td>
     </tr>
   );
