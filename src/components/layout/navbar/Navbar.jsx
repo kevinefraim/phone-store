@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import { StoreContext } from "../../../context/StoreContext";
@@ -7,19 +7,38 @@ import Buscador from "../buscador/Buscador";
 import logo from "../../../assets/img/logo/logo.png";
 
 import "./Navbar.css";
+import axios from "axios";
 
 const Navbar = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
-  const { handleClear, setCartQty, cartQty } = useContext(StoreContext);
+  const token = localStorage.getItem("token");
 
   const navigate = useNavigate();
+  const [cartCounter, setCartCounter] = useState(0);
 
   const onLogout = () => {
     handleLogout();
-    handleClear();
     navigate("/");
-    setCartQty(0);
   };
+
+  const getCartQty = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/cart`,
+        {
+          headers: { "x-token": token },
+        }
+      );
+
+      setCartCounter(data.cart.quantity);
+    } catch (error) {
+      setCartCounter(0);
+    }
+  };
+
+  useEffect(() => {
+    getCartQty();
+  }, [cartCounter, token]);
 
   return (
     <header style={{ flexShrink: 0 }}>
@@ -81,9 +100,9 @@ const Navbar = () => {
               <i className="bi bi-person-fill"></i>
             </Link>
           )}
-          <Link to="/carrito/3" className="d-flex">
+          <Link to="/carrito" className="d-flex">
             <i className="bi bi-cart-fill"></i>
-            <span className="me-2">{cartQty}</span>
+            <span className="me-2">{cartCounter}</span>
           </Link>
         </div>
       </nav>

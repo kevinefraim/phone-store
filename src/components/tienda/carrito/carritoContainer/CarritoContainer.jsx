@@ -61,22 +61,23 @@ const CarritoContainer = () => {
   const readUserItems = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API_URL}/items/cart/${cartId}`,
+        `${process.env.REACT_APP_API_URL}/items/cart`,
         {
           headers: { "x-token": token },
         }
       );
       setCartItems(data.filteredItems);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
 
   const getCartTotal = async () => {
-    const { data } = await axios.get(
-      `${process.env.REACT_APP_API_URL}/cart/${cartId}`
-    );
-    setCart(data?.cart[0]);
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/cart`, {
+      headers: { "x-token": token },
+    });
+    setCart(data?.cart);
   };
 
   useEffect(() => {
@@ -116,7 +117,7 @@ const CarritoContainer = () => {
       console.log(error);
     }
   };
-  console.log(cartItems);
+
   //quitar cantidad
   const subQuantity = async (qty, itemId) => {
     try {

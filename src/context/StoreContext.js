@@ -11,17 +11,10 @@ const StoreProvider = ({ children }) => {
   const [compras, setCompras] = useState(
     JSON.parse(localStorage.getItem("compras")) ?? []
   );
-  const [cartQty, setCartQty] = useState(
-    JSON.parse(localStorage.getItem("cartQty")) ?? 0
-  );
 
   useEffect(() => {
     setProducts(data.phones);
   }, [data.phones]);
-
-  useEffect(() => {
-    localStorage.setItem("cartQty", JSON.stringify(cartQty));
-  }, [cartQty]);
 
   useEffect(() => {
     localStorage.setItem("compras", JSON.stringify(compras));
@@ -39,8 +32,6 @@ const StoreProvider = ({ children }) => {
         compras,
         setProducts,
         handleCompra,
-        cartQty,
-        setCartQty,
       }}
     >
       {children}

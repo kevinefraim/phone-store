@@ -90,7 +90,7 @@ const ProductDetail = () => {
           <p className="fw-bold">Precio: ${phone?.price}</p>
           <p className="fw-bold">Marca: {phone?.brand.name}</p>
           {added ? (
-            <Link to="/carrito/3">
+            <Link to="/carrito">
               <button className="btn btn-primary ">Continuar al carrito</button>
             </Link>
           ) : (
