@@ -30,17 +30,6 @@ const ProductDetail = () => {
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/phones/${id}`);
   const [error, setError] = useState("");
   const { phone } = data;
-  const [cart, setCart] = useState(null);
-
-  const getCartId = async () => {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/cart`, {
-      headers: { "x-token": localStorage.getItem("token") },
-    });
-    console.log(data.cart);
-  };
-  useEffect(() => {
-    getCartId();
-  }, []);
 
   const onAdd = async () => {
     if (activeUser === null)

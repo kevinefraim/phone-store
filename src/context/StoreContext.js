@@ -9,6 +9,8 @@ const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]); //estado de productos
   const [cartCounter, setCartCounter] = useState(0);
   const token = localStorage.getItem("token");
+  const [cart, setCart] = useState(null);
+  const [cartItems, setCartItems] = useState(null);
 
   const [compras, setCompras] = useState(
     JSON.parse(localStorage.getItem("compras")) ?? []
@@ -30,7 +32,7 @@ const StoreProvider = ({ children }) => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }, [carrito]);
 
-  const getCartQty = async () => {
+  const handleGetCart = async () => {
     try {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_URL}/cart`,
@@ -38,7 +40,8 @@ const StoreProvider = ({ children }) => {
           headers: { "x-token": token },
         }
       );
-
+      setCart(data.cart);
+      setCartItems(data.cart.item);
       setCartCounter(data.cart.quantity);
     } catch (error) {
       setCartCounter(0);
@@ -46,7 +49,7 @@ const StoreProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getCartQty();
+    handleGetCart();
   }, [cartCounter, token]);
 
   //Mis compras
@@ -65,6 +68,10 @@ const StoreProvider = ({ children }) => {
         setCarrito,
         cartCounter,
         setCartCounter,
+        cart,
+        setCart,
+        cartItems,
+        setCartItems,
       }}
     >
       {children}
