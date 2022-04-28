@@ -2,12 +2,14 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
+import { StoreContext } from "../../../context/StoreContext";
 import LoginForm from "../../layout/loginForm/LoginForm";
 
 import "./Login.css";
 
 const LogIn = () => {
   const { handleActiveUser, activeUser } = useContext(AuthContext);
+  const { setCartCounter, cartCounter } = useContext(StoreContext);
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState(null);
@@ -27,6 +29,7 @@ const LogIn = () => {
       if (data.ok) navigate("/");
 
       handleActiveUser(data.loginUser, data.token);
+      setCartCounter(cartCounter);
     } catch (error) {
       setError(error.response.data);
     }

@@ -7,16 +7,16 @@ import Buscador from "../buscador/Buscador";
 import logo from "../../../assets/img/logo/logo.png";
 
 import "./Navbar.css";
-import axios from "axios";
 
 const Navbar = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
-  const { cartCounter } = useContext(StoreContext);
+  const { cartCounter, setCartCounter } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const onLogout = () => {
     handleLogout();
     navigate("/");
+    setCartCounter(0);
   };
 
   return (

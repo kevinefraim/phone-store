@@ -9,7 +9,6 @@ const LoginForm = ({
   setEmail,
   setPass,
 }) => {
-  console.log(error);
   return (
     <form onSubmit={handleLog} className="form-login">
       <div className="title d-flex flex-column">

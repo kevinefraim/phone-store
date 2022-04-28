@@ -145,7 +145,17 @@ const CarritoContainer = () => {
     }
   };
 
-  // const removeAllItems = () => {};
+  const removeAllItems = async () => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/items/delete/all`, {
+        headers: { "x-token": token },
+      });
+      setCartCounter(0);
+      setCartItems([]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <main className="container-fluid my-2 p-0">
@@ -186,7 +196,9 @@ const CarritoContainer = () => {
           </table>
           <div className="d-flex flex-wrap justify-content-evenly align-items-center mt-5">
             <h5 className="fw-bolder">Total: ${cart?.total}</h5>
-            <button className="btn btn-danger">Vaciar carrito</button>
+            <button onClick={removeAllItems} className="btn btn-danger">
+              Vaciar carrito
+            </button>
             <button onClick={submitCompra} className="btn btn-primary mt-3">
               Confirmar compra
             </button>
