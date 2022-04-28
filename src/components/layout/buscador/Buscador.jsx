@@ -17,7 +17,7 @@ const Buscador = () => {
       <input
         value={value}
         onChange={({ target }) => setValue(target.value)}
-        className="rounded-3 p-0 w-100"
+        className="rounded-3 p-1 w-100"
         type="text"
         placeholder="Buscar..."
       />

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import ErrorForm from "../assets/errorForm/ErrorForm";
 
@@ -16,25 +17,39 @@ const ContactoForm = () => {
     setMensaje("");
   };
 
-  const contactSubmit = (e) => {
-    e.preventDefault();
+  const contactSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-    if ([nombre, tel, mensaje].includes("")) {
-      setError("Completa todos los campos");
-      return;
+      // if ([nombre, tel, mensaje].includes("")) {
+      //   setError("Completa todos los campos");
+      //   return;
+      // }
+
+      // if (tel.length < 10) {
+      //   setError("El número de telefono no existe");
+      //   return;
+      // }
+
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL}/message/create`,
+        {
+          fullName: nombre,
+          phoneNumber: tel,
+          message: mensaje,
+        }
+      );
+
+      formReset();
+      setError("");
+      setMsg("Tu mensaje ha sido enviado!");
+      setTimeout(() => {
+        setMsg("");
+      }, 2000);
+    } catch (error) {
+      setError(error.response.data.msg);
+      console.log(error.response.data.msg);
     }
-
-    if (tel.length < 10) {
-      setError("El número de telefono no existe");
-      return;
-    }
-
-    formReset();
-    setError("");
-    setMsg("Tu mensaje ha sido enviado!");
-    setTimeout(() => {
-      setMsg("");
-    }, 2000);
   };
 
   return (
@@ -47,7 +62,9 @@ const ContactoForm = () => {
               {msg !== "" && (
                 <h3 className="text-light bg-success p-2 rounded-3">{msg}</h3>
               )}
-              {error !== "" && <ErrorForm error={error} />}
+              {error !== "" && (
+                <ErrorForm error={"Debes rellenar todos los campos"} />
+              )}
             </div>
           </div>
           <div className="form-item">

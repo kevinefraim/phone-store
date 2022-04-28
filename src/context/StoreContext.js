@@ -1,6 +1,7 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
+import { AuthContext } from "./AuthContext";
 
 export const StoreContext = createContext();
 
@@ -11,6 +12,7 @@ const StoreProvider = ({ children }) => {
   const token = localStorage.getItem("token");
   const [cart, setCart] = useState(null);
   const [cartItems, setCartItems] = useState(null);
+  const { activeUser } = useContext(AuthContext);
 
   const [compras, setCompras] = useState(
     JSON.parse(localStorage.getItem("compras")) ?? []
@@ -43,6 +45,7 @@ const StoreProvider = ({ children }) => {
       setCart(data.cart);
       setCartItems(data.cart.item);
       setCartCounter(data.cart.quantity);
+      console.log("hola");
     } catch (error) {
       setCartCounter(0);
     }
@@ -50,7 +53,7 @@ const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     handleGetCart();
-  }, [cartCounter, token]);
+  }, [cartCounter, token, activeUser]);
 
   //Mis compras
   const handleCompra = (compra) => {
