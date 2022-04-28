@@ -7,9 +7,15 @@ export const StoreContext = createContext();
 const StoreProvider = ({ children }) => {
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/phones`);
   const [products, setProducts] = useState([]); //estado de productos
+  const [cartCounter, setCartCounter] = useState(0);
+  const token = localStorage.getItem("token");
 
   const [compras, setCompras] = useState(
     JSON.parse(localStorage.getItem("compras")) ?? []
+  );
+
+  const [carrito, setCarrito] = useState(
+    JSON.parse(localStorage.getItem("carrito")) ?? []
   );
 
   useEffect(() => {
@@ -19,6 +25,29 @@ const StoreProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("compras", JSON.stringify(compras));
   }, [compras]);
+
+  useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }, [carrito]);
+
+  const getCartQty = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/cart`,
+        {
+          headers: { "x-token": token },
+        }
+      );
+
+      setCartCounter(data.cart.quantity);
+    } catch (error) {
+      setCartCounter(0);
+    }
+  };
+
+  useEffect(() => {
+    getCartQty();
+  }, [cartCounter, token]);
 
   //Mis compras
   const handleCompra = (compra) => {
@@ -32,6 +61,10 @@ const StoreProvider = ({ children }) => {
         compras,
         setProducts,
         handleCompra,
+        carrito,
+        setCarrito,
+        cartCounter,
+        setCartCounter,
       }}
     >
       {children}

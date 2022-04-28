@@ -31,7 +31,8 @@ const CarritoContainer = () => {
   const { cartId } = useParams();
   const [cartItems, setCartItems] = useState(null);
   const [cart, setCart] = useState(null);
-  const { handleCompra } = useContext(StoreContext);
+  const { cartCounter, setCartCounter, handleCompra } =
+    useContext(StoreContext);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -73,8 +74,11 @@ const CarritoContainer = () => {
 
   useEffect(() => {
     readUserItems();
-    getCartTotal();
   }, []);
+
+  useEffect(() => {
+    getCartTotal();
+  }, [cart]);
 
   //submit compra
   const submitCompra = () => {
@@ -128,16 +132,20 @@ const CarritoContainer = () => {
   const onDelete = async (itemId) => {
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API_URL}/items/delete/${itemId}`,
+        `${process.env.REACT_APP_API_URL}/items/delete/one/${itemId}`,
         {
           headers: { "x-token": token },
         }
       );
-      setCartItems(cartItems.filter((item) => item.id === itemId));
+
+      setCartItems(cartItems.filter((item) => item.id !== itemId));
+      setCartCounter(cartCounter - 1);
     } catch (error) {
       console.log(error);
     }
   };
+
+  // const removeAllItems = () => {};
 
   return (
     <main className="container-fluid my-2 p-0">

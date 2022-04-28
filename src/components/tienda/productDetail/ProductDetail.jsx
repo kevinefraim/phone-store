@@ -23,20 +23,24 @@ const addAlert = () => {
 };
 
 const ProductDetail = () => {
-  const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
   const { activeUser } = useContext(AuthContext);
+  const { cartCounter, setCartCounter } = useContext(StoreContext);
   const { id } = useParams();
   const { data } = useFetch(`${process.env.REACT_APP_API_URL}/phones/${id}`);
   const [error, setError] = useState("");
   const { phone } = data;
+  const [cart, setCart] = useState(null);
 
-  //onChange quantity
-  const handleChange = ({ target }) => {
-    const qtyChange = target.value;
-    setQty(parseInt(qtyChange));
+  const getCartId = async () => {
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/cart`, {
+      headers: { "x-token": localStorage.getItem("token") },
+    });
+    console.log(data.cart);
   };
-  console.log(qty);
+  useEffect(() => {
+    getCartId();
+  }, []);
 
   const onAdd = async () => {
     if (activeUser === null)
@@ -44,20 +48,18 @@ const ProductDetail = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const { data } = await axios.post(
+      await axios.post(
         `${process.env.REACT_APP_API_URL}/items/create`,
         {
           phone: phone?.id,
-          cart: 3,
-          quantity: qty,
+          quantity: 1,
         },
         {
           headers: { "x-token": token },
         }
       );
-      // handleAdd(data.newItem);
       setAdded(true);
-      console.log(data.newItem);
+      setCartCounter(cartCounter + 1);
 
       addAlert();
     } catch (error) {
@@ -95,16 +97,6 @@ const ProductDetail = () => {
             </Link>
           ) : (
             <div className="btn-compra">
-              <div className="qty-select">
-                <label htmlFor="qty">Cantidad:</label>
-                <select onChange={handleChange} value={qty} name="qty">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
               <button onClick={onAdd} className="btn btn-primary ">
                 Agregar al carrito <i className="bi bi-cart"></i>
               </button>

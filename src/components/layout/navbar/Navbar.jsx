@@ -11,34 +11,13 @@ import axios from "axios";
 
 const Navbar = () => {
   const { activeUser, handleLogout } = useContext(AuthContext);
-  const token = localStorage.getItem("token");
-
+  const { cartCounter } = useContext(StoreContext);
   const navigate = useNavigate();
-  const [cartCounter, setCartCounter] = useState(0);
 
   const onLogout = () => {
     handleLogout();
     navigate("/");
   };
-
-  const getCartQty = async () => {
-    try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API_URL}/cart`,
-        {
-          headers: { "x-token": token },
-        }
-      );
-
-      setCartCounter(data.cart.quantity);
-    } catch (error) {
-      setCartCounter(0);
-    }
-  };
-
-  useEffect(() => {
-    getCartQty();
-  }, [cartCounter, token]);
 
   return (
     <header style={{ flexShrink: 0 }}>
