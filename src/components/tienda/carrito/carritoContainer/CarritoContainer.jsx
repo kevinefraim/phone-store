@@ -103,7 +103,7 @@ const CarritoContainer = () => {
       console.log(error);
     }
   };
-  console.log(cart);
+
   //delete item
   const onDelete = async (itemId) => {
     try {

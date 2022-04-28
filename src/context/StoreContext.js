@@ -45,7 +45,6 @@ const StoreProvider = ({ children }) => {
       setCart(data.cart);
       setCartItems(data.cart.item);
       setCartCounter(data.cart.quantity);
-      console.log("hola");
     } catch (error) {
       setCartCounter(0);
     }
