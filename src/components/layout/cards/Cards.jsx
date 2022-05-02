@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 import "./Cards.css";
 
-const Cards = ({ name, price, img, id }) => {
+const Cards = ({ name, price, image, id }) => {
   return (
     <>
       <Link to={`/tienda/${id}`}>
         <article className="ms-2 shadow oferta-card">
-          <img className="product-img" src={img} alt={name} />
+          <img className="product-img" src={image.url} alt={name} />
           <div className="card-body p-0 text-center fs-5 fw-bolder">
             <h5 className="fs- fw-bolder">{name}</h5>
             <p>${price}</p>

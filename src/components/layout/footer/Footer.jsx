@@ -8,13 +8,7 @@ const Footer = () => {
           <p>© Sitio realizado por Kevin Efraim y Nicolás Joaquín</p>
         </div>
         <div className="admin-btn">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://phoneadmin.vercel.app/"
-          >
-            <button className="btn btn-secondary">Admin</button>
-          </a>
+          <button className="btn btn-secondary">Admin</button>
         </div>
       </div>
     </footer>

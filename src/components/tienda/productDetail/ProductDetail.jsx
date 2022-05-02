@@ -71,7 +71,7 @@ const ProductDetail = () => {
         <img
           height={800}
           className="img-responsive"
-          src={phone?.img}
+          src={phone?.image.url}
           style={{ objectFit: "contain" }}
           alt={phone?.name}
         />
@@ -80,6 +80,7 @@ const ProductDetail = () => {
           <h5>{phone?.desc}</h5>
           <p className="fw-bold">Precio: ${phone?.price}</p>
           <p className="fw-bold">Marca: {phone?.brand.name}</p>
+          <p className="fw-bold">Descripción: {phone?.description}</p>
           {added ? (
             <Link to="/carrito">
               <button className="btn btn-primary ">Continuar al carrito</button>
